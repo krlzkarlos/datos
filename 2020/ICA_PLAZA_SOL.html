@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ICA PLAZA SOL</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 40px;
+        }
+        .chart-container {
+            position: relative;
+            margin: auto;
+            width: 90%;
+            max-width: 600px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 24px;
+            }
+        }
+        @media (min-width: 601px) {
+            h1 {
+                font-size: 32px;
+            }
+            .chart-container {
+                width: 70%; /* Ajusta el ancho para pantallas más grandes */
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>ICA PLAZA SOL</h1>
+
+    <div class="chart-container">
+        <canvas id="sexoChart"></canvas>
+    </div>
+    <div class="chart-container">
+        <canvas id="edadChart"></canvas>
+    </div>
+    <div class="chart-container">
+        <canvas id="estadoCivilChart"></canvas>
+    </div>
+    <div class="chart-container">
+        <canvas id="ubicacionChart"></canvas>
+    </div>
+    <div class="chart-container">
+        <canvas id="monedaChart"></canvas>
+    </div>
+    <div class="chart-container">
+        <canvas id="tipoOperacionChart"></canvas>
+    </div>
+    <div class="chart-container">
+        <canvas id="origenChart"></canvas>
+    </div>
+
+    <script>
+        const sexoData = {
+            labels: ['Femenino', 'Masculino'],
+            datasets: [{
+                label: 'Sexo',
+                data: [56.13, 43.87],
+                backgroundColor: ['#FF6384', '#36A2EB'],
+                hoverOffset: 4
+            }]
+        };
+
+        const edadData = {
+            labels: ['18-25', '26-35', '36-45', '46-55', '56 a más'],
+            datasets: [{
+                label: 'Rango de Edad',
+                data: [1.33, 17.13, 22.65, 20.86, 38.03],
+                backgroundColor: ['#FFCE56', '#FF6384', '#36A2EB', '#4BC0C0', '#9966FF'],
+            }]
+        };
+
+        const estadoCivilData = {
+            labels: ['Solter@', 'Casad@', 'Divorciad@', 'Viud@'],
+            datasets: [{
+                label: 'Estado Civil',
+                data: [66.39, 26.12, 4.41, 3.08],
+                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0'],
+            }]
+        };
+
+        const ubicacionData = {
+            labels: [
+                'ICA', 'PARCONA', 'LA TINGUIÑA', 'SANTIAGO', 'SUBTANJALLA',
+                'PUEBLO NUEVO', 'LOS AQUIJES', 'SALAS', 'EL AGUSTINO', 'SAN JUAN BAUTISTA',
+                // Agrega más ubicaciones según tu archivo
+            ],
+            datasets: [{
+                label: 'Ubicación',
+                data: [
+                    54.75, 7.06, 6.18, 2.93, 2.83,
+                    2.47, 1.85, 1.63, 1.24, 1.20
+                    // Agrega más porcentajes según tu archivo
+                ],
+                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF'],
+            }]
+        };
+
+        const monedaData = {
+            labels: ['US Dollar', 'Euros', 'Real Brasilero', 'Peso Chileno', 'Peso Colombiano'],
+            datasets: [{
+                label: 'Moneda',
+                data: [98.92, 0.92, 0.06, 0.06, 0.05],
+                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF'],
+            }]
+        };
+
+        const tipoOperacionData = {
+            labels: ['Compra', 'Venta'],
+            datasets: [{
+                label: 'Tipo de Operación',
+                data: [69.03, 30.97],
+                backgroundColor: ['#FF6384', '#36A2EB'],
+            }]
+        };
+
+        const origenData = {
+            labels: ['Remesa', 'Otros'],
+            datasets: [{
+                label: 'Origen',
+                data: [72.37, 27.63],
+                backgroundColor: ['#FF6384', '#36A2EB'],
+            }]
+        };
+
+        const config = (data, type) => ({
+            type: type,
+            data: data,
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(tooltipItem) {
+                                let label = tooltipItem.label || '';
+                                if (label) {
+                                    label += ': ' + tooltipItem.raw.toFixed(2) + '%';
+                                }
+                                return label;
+                            }
+                        }
+                    },
+                    title: {
+                        display: true,
+                        text: data.datasets[0].label
+                    }
+                }
+            },
+        });
+
+        const sexoChart = new Chart(
+            document.getElementById('sexoChart'),
+            config(sexoData, 'pie')
+        );
+
+        const edadChart = new Chart(
+            document.getElementById('edadChart'),
+            config(edadData, 'bar')
+        );
+
+        const estadoCivilChart = new Chart(
+            document.getElementById('estadoCivilChart'),
+            config(estadoCivilData, 'pie')
+        );
+
+        const ubicacionChart = new Chart(
+            document.getElementById('ubicacionChart'),
+            config(ubicacionData, 'bar')
+        );
+
+        const monedaChart = new Chart(
+            document.getElementById('monedaChart'),
+            config(monedaData, 'pie')
+        );
+
+        const tipoOperacionChart = new Chart(
+            document.getElementById('tipoOperacionChart'),
+            config(tipoOperacionData, 'pie')
+        );
+
+        const origenChart = new Chart(
+            document.getElementById('origenChart'),
+            config(origenData, 'pie')
+        );
+    </script>
+</body>
+</html>

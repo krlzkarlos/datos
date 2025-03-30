@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Callao 4</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+      body {
+        font-family: "Arial", sans-serif;
+        background-color: #f0f0f0;
+        margin: 0;
+        padding: 20px;
+      }
+      h1 {
+        text-align: center;
+        color: #333;
+        margin-bottom: 40px;
+      }
+      .chart-container {
+        position: relative;
+        margin: auto;
+        width: 90%;
+        max-width: 600px;
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        margin-bottom: 30px;
+      }
+      @media (max-width: 600px) {
+        h1 {
+          font-size: 24px;
+        }
+      }
+      @media (min-width: 601px) {
+        h1 {
+          font-size: 32px;
+        }
+        .chart-container {
+          width: 70%; /* Ajusta el ancho para pantallas más grandes */
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Callao 4</h1>
+
+    <div class="chart-container">
+      <canvas id="sexoChart"></canvas>
+    </div>
+    <div class="chart-container">
+      <canvas id="edadChart"></canvas>
+    </div>
+    <div class="chart-container">
+      <canvas id="estadoCivilChart"></canvas>
+    </div>
+    <div class="chart-container">
+      <canvas id="ubicacionChart"></canvas>
+    </div>
+    <div class="chart-container">
+      <canvas id="monedaChart"></canvas>
+    </div>
+    <div class="chart-container">
+      <canvas id="tipoOperacionChart"></canvas>
+    </div>
+    <div class="chart-container">
+      <canvas id="origenChart"></canvas>
+    </div>
+
+    <script>
+      const sexoData = {
+        labels: ["Femenino", "Masculino"],
+        datasets: [
+          {
+            label: "Sexo",
+            data: [51.33, 48.67],
+            backgroundColor: ["#36A2EB", "#FF6384"],
+            hoverOffset: 4,
+          },
+        ],
+      };
+
+      const edadData = {
+        labels: ["18-25", "26-35", "36-45", "46-55", "56 a más"],
+        datasets: [
+          {
+            label: "Rango de Edad",
+            data: [0.63, 16.46, 24.22, 25.3, 33.38],
+            backgroundColor: [
+              "#FFCE56",
+              "#FF6384",
+              "#36A2EB",
+              "#4BC0C0",
+              "#9966FF",
+            ],
+          },
+        ],
+      };
+
+      const estadoCivilData = {
+        labels: ["Solter@", "Casad@", "Viud@", "Divorciad@"],
+        datasets: [
+          {
+            label: "Estado Civil",
+            data: [54.44, 41.41, 3.56, 0.59],
+            backgroundColor: ["#FF6384", "#36A2EB", "#FFCE56", "#4BC0C0"],
+          },
+        ],
+      };
+
+      const ubicacionData = {
+        labels: [
+          "BELLAVISTA",
+          "CALLAO",
+          "LA PERLA",
+          "LIMA",
+          "SAN MIGUEL",
+          "CARMEN DE LA LEGUA REYNOSO",
+          "SAN MARTIN DE PORRES",
+          "SANTIAGO DE SURCO",
+          "COMAS",
+          "LA PUNTA",
+          "MAGDALENA DEL MAR",
+          "JESUS MARIA",
+          "LOS OLIVOS",
+          "SAN JUAN DE LURIGANCHO",
+          "PUEBLO LIBRE",
+          "MIRAFLORES",
+          "LINCE",
+          "VENTANILLA",
+          "VILLA MARIA DEL TRIUNFO",
+          "CHICLAYO",
+          "VICHAYAL",
+          "BARRANCA",
+          "CHORRILLOS",
+          "LA VICTORIA",
+          "MARCAVELICA",
+          "MI PERÚ",
+          "EL AGUSTINO",
+          "SURQUILLO",
+          "PUNO",
+          "IQUITOS",
+          "PUENTE PIEDRA",
+          "SAN BORJA",
+          "SAN ISIDRO",
+          "BREÑA",
+          "LA MOLINA",
+          "AREQUIPA",
+          "ATE",
+          "CARMEN DE LA LEGUA-REYNOSO",
+          "CCORCA",
+          "LA TINGUIÑA",
+          "SAN LUIS",
+          "CIENEGUILLA",
+          "CUSCO",
+          "TUMBES",
+          "HUACHO",
+          "PIURA",
+          "VICTOR LARCO HERRERA",
+          "SAN MARTÍN DE PORRES",
+          "CAJAMARCA",
+          "CATILLUC",
+          "SAPOSOA",
+          "HUARAL",
+          "CHIMBOTE",
+          "PACHACUTEC",
+          "SANTA ANITA",
+          "CARABAYLLO",
+          "HUANCAYO",
+          "MI PERÚ",
+          "LURIGANCHO",
+          "AUCALLAMA",
+          "LA ARENA",
+          "RIMAC",
+          "SAN JUAN DE MIRAFLORES",
+        ],
+        datasets: [
+          {
+            label: "Ubicación",
+            data: [
+              37.39, 33.51, 6.5, 3.65, 2.71, 2.62, 2.53, 1.17, 0.9, 0.86, 0.72,
+              0.68, 0.63, 0.54, 0.5, 0.41, 0.41, 0.32, 0.23, 0.23, 0.18, 0.18,
+              0.18, 0.18, 0.18, 0.14, 0.14, 0.14, 0.09, 0.09, 0.09, 0.09, 0.09,
+              0.09, 0.09, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05,
+              0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05,
+              0.05, 0.05, 0.05, 0.05, 0.05,
+            ],
+            backgroundColor: [
+              "#FF6384",
+              "#36A2EB",
+              "#FFCE56",
+              "#4BC0C0",
+              "#9966FF",
+            ],
+          },
+        ],
+      };
+
+      const monedaData = {
+        labels: [
+          "US Dollar",
+          "Euros",
+          "Peso Chileno",
+          "Peso Colombiano",
+          "Real Brasilero",
+        ],
+        datasets: [
+          {
+            label: "Moneda",
+            data: [98.05, 1.64, 0.19, 0.06, 0.06],
+            backgroundColor: [
+              "#FF6384",
+              "#36A2EB",
+              "#FFCE56",
+              "#4BC0C0",
+              "#9966FF",
+            ],
+          },
+        ],
+      };
+
+      const tipoOperacionData = {
+        labels: ["Compra", "Venta"],
+        datasets: [
+          {
+            label: "Tipo de Operación",
+            data: [72.62, 27.38],
+            backgroundColor: ["#FF6384", "#36A2EB"],
+          },
+        ],
+      };
+
+      const origenData = {
+        labels: ["Remesa", "Otros"],
+        datasets: [
+          {
+            label: "Origen",
+            data: [24.83, 75.17],
+            backgroundColor: ["#FF6384", "#36A2EB"],
+          },
+        ],
+      };
+
+      const config = (data, type) => ({
+        type: type,
+        data: data,
+        options: {
+          responsive: true,
+          plugins: {
+            legend: {
+              position: "top",
+            },
+            tooltip: {
+              callbacks: {
+                label: function (tooltipItem) {
+                  let label = tooltipItem.label || "";
+                  if (label) {
+                    label += ": " + tooltipItem.raw.toFixed(1) + "%";
+                  }
+                  return label;
+                },
+              },
+            },
+            title: {
+              display: true,
+              text: data.datasets[0].label,
+            },
+          },
+        },
+      });
+
+      const sexoChart = new Chart(
+        document.getElementById("sexoChart"),
+        config(sexoData, "pie")
+      );
+
+      const edadChart = new Chart(
+        document.getElementById("edadChart"),
+        config(edadData, "bar")
+      );
+
+      const estadoCivilChart = new Chart(
+        document.getElementById("estadoCivilChart"),
+        config(estadoCivilData, "pie")
+      );
+
+      const ubicacionChart = new Chart(
+        document.getElementById("ubicacionChart"),
+        config(ubicacionData, "bar")
+      );
+
+      const monedaChart = new Chart(
+        document.getElementById("monedaChart"),
+        config(monedaData, "pie")
+      );
+
+      const tipoOperacionChart = new Chart(
+        document.getElementById("tipoOperacionChart"),
+        config(tipoOperacionData, "pie")
+      );
+
+      const origenChart = new Chart(
+        document.getElementById("origenChart"),
+        config(origenData, "pie")
+      );
+    </script>
+
+    <!-- Botón para abrir el modal -->
+    <button
+      type="button"
+      class="btn btn-2020 btn-custom"
+      data-bs-toggle="modal"
+      data-bs-target="#yearOptionsModal"
+      onclick="showYearOptions('2020')"
+    >
+      Opciones del año
+    </button>
+
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="yearOptionsModal"
+      tabindex="-1"
+      aria-labelledby="yearOptionsModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="yearOptionsModalLabel">
+              Opciones del año
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body" id="yearOptionsModalBody">
+            <!-- Aquí se mostrarán las opciones del año seleccionado -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function showYearOptions(year) {
+        const modal = new bootstrap.Modal(
+          document.getElementById("yearOptionsModal")
+        );
+        const modalBody = document.getElementById("yearOptionsModalBody");
+
+        // Limpiar el contenido del modal antes de mostrar las opciones
+        modalBody.innerHTML = "";
+
+        // Generar los enlaces para el año 2020
+        if (year === "2020") {
+          modalBody.innerHTML = `
+        <a href="CALLAO_4.html" class="btn btn-2020 btn-custom">Callao 4</a>
+        <a href="TRUJILLO_3.html" class="btn btn-2020 btn-custom">Trujillo 3</a>
+        <a href="CHIMBOTE.html" class="btn btn-2020 btn-custom">Chimbote</a>
+        <!-- Agrega aquí los demás enlaces para el año 2020 -->
+      `;
+        } else if (year === "2021") {
+          // Generar los enlaces para el año 2021
+        } else if (year === "2022") {
+          // Generar los enlaces para el año 2022
+        } else if (year === "2023") {
+          // Generar los enlaces para el año 2023
+        } else if (year === "2024") {
+          // Generar los enlaces para el año 2024
+        }
+
+        // Mostrar el modal
+        modal.show();
+      }
+    </script>
+  </body>
+</html>
