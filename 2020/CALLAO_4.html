@@ -307,45 +307,6 @@
       );
     </script>
 
-    <!-- Botón para abrir el modal -->
-    <button
-      type="button"
-      class="btn btn-2020 btn-custom"
-      data-bs-toggle="modal"
-      data-bs-target="#yearOptionsModal"
-      onclick="showYearOptions('2020')"
-    >
-      Opciones del año
-    </button>
-
-    <!-- Modal -->
-    <div
-      class="modal fade"
-      id="yearOptionsModal"
-      tabindex="-1"
-      aria-labelledby="yearOptionsModalLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="yearOptionsModalLabel">
-              Opciones del año
-            </h5>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div class="modal-body" id="yearOptionsModalBody">
-            <!-- Aquí se mostrarán las opciones del año seleccionado -->
-          </div>
-        </div>
-      </div>
-    </div>
-
     <script>
       function showYearOptions(year) {
         const modal = new bootstrap.Modal(
