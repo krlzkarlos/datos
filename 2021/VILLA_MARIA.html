@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VILLA MARIA</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .chart-container {
+            position: relative;
+            width: 80%;
+            margin: auto;
+            max-width: 600px; /* Ajusta el ancho máximo del contenedor */
+            background-color: white; /* Fondo blanco para el contenedor */
+            padding: 20px; /* Espaciado interno */
+            border-radius: 8px; /* Bordes redondeados */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra para el contenedor */
+        }
+        canvas {
+            max-width: 100%;
+            height: auto;
+        }
+        h1 {
+            text-align: center;
+        }
+        h2 {
+            text-align: center;
+            font-size: 24px; /* Tamaño de fuente para el subtítulo y etiquetas */
+        }
+    </style>
+</head>
+<body>
+    <h1>VILLA MARIA</h1>
+    <h2>Cantidad de muestra: 3479</h2>
+    
+    <div class="chart-container">
+        <h2>Sexo</h2>
+        <canvas id="sexoChart"></canvas>
+    </div>
+    
+    <div class="chart-container">
+        <h2>Rango de Edad</h2>
+        <canvas id="edadChart"></canvas>
+    </div>
+    
+    <div class="chart-container">
+        <h2>Estado Civil</h2>
+        <canvas id="estadoCivilChart"></canvas>
+    </div>
+    
+    <div class="chart-container">
+        <h2>Ubicación</h2>
+        <canvas id="ubicacionChart"></canvas>
+    </div>
+
+    <div class="chart-container">
+        <h2>Moneda</h2>
+        <canvas id="monedaChart"></canvas>
+    </div>
+    
+    <div class="chart-container">
+        <h2>Tipo de Operación</h2>
+        <canvas id="tipoOperacionChart"></canvas>
+    </div>
+    
+    <div class="chart-container">
+        <h2>Origen</h2>
+        <canvas id="origenChart"></canvas>
+    </div>
+
+    <script>
+        const sexoData = {
+            labels: ['Femenino', 'Masculino'],
+            datasets: [{
+                label: 'Porcentaje (%)',
+                data: [52.74, 47.26],
+                backgroundColor: ['#36A2EB', '#FF6384'],
+                borderColor: ['#36A2EB', '#FF6384'],
+                borderWidth: 1
+            }]
+        };
+
+        const edadData = {
+            labels: ['18-25', '26-35', '36-45', '46-55', '56 a más'],
+            datasets: [{
+                label: 'Porcentaje (%)',
+                data: [1.80, 25.47, 22.99, 26.52, 23.22],
+                backgroundColor: ['#FFCE56', '#FF6384', '#36A2EB', '#4BC0C0', '#9966FF'],
+                borderColor: ['#FFCE56', '#FF6384', '#36A2EB', '#4BC0C0', '#9966FF'],
+                borderWidth: 1
+            }]
+        };
+
+        const estadoCivilData = {
+            labels: ['Solter@', 'Casad@', 'Divorciad@', 'Viud@'],
+            datasets: [{
+                label: 'Porcentaje (%)',
+                data: [66.99, 27.38, 3.23, 2.40],
+                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0'],
+                borderColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0'],
+                borderWidth: 1
+            }]
+        };
+
+        const ubicacionData = {
+            labels: [
+                'VILLA MARIA DEL TRIUNFO', 'SURQUILLO', 'LIMA', 
+                'VILLA MARíA DEL TRIUNFO', 'SAN JUAN DE MIRAFLORES', 
+                'VILLA EL SALVADOR', 'LA VICTORIA', 'MIRAFLORES', 
+                'SANTIAGO DE SURCO', '0', 'BREÑA', 'LURIN', 
+                'CHORRILLOS', 'CALLAO', 'SANTA MARIA', 
+                'LA MOLINA', 'SAN LUIS', 'ATE', 
+                'PUENTE PIEDRA', 'JESUS MARIA', 'INDEPENDENCIA', 
+                'COMAS', 'LINCE', 'SAN JUAN DE LURIGANCHO', 
+                'SAN JUAN BAUTISTA', 'CALLERIA', 'VICTOR LARCO HERRERA', 
+                'SANTA ANITA', 'VEINTISEIS DE OCTUBRE', 'SAN MARTíN DE PORRES', 
+                'BARRANCO', 'PACORA', 'PACHACAMAC', 
+                'EL AGUSTINO', 'SAN MARTIN DE PORRES', 'JOSE LEONARDO ORTIZ', 
+                'QUILMANA', 'IMPERIAL', 'PUEBLO NUEVO', 
+                'RíMAC', 'SAN BARTOLO', 'PUNO', 
+                'PISCO', 'CAJAMARCA', 'EL CARMEN DE LA FRONTERA', 
+                'JESúS MARíA', 'POROY', 'TACNA', 
+                'SAN ISIDRO'
+            ],
+            datasets: [{
+                label: 'Porcentaje (%)',
+                data: [
+                    42.01, 10.50, 10.20, 
+                    9.98, 7.65, 6.00, 
+                    1.73, 1.65, 1.20, 
+                    0.98, 0.98, 0.90, 
+                    0.75, 0.45, 0.45, 
+                    0.30, 0.30, 0.30, 
+                    0.30, 0.30, 0.23, 
+                    0.23, 0.23, 0.15, 
+                    0.15, 0.15, 0.15, 
+                    0.15, 0.15, 0.08, 
+                    0.08, 0.08, 0.08, 
+                    0.08, 0.08, 0.08, 
+                    0.08, 0.08, 0.08, 
+                    0.08, 0.08, 0.08, 
+                    0.08, 0.08, 0.08, 
+                    0.08, 0.08, 0.08, 
+                    0.08, 0.08, 0.08, 
+                    0.08, 0.08, 0.08, 
+                    0.08, 0.08, 0.08
+                ],
+                backgroundColor: ['#36A2EB', '#FF6384', '#FFCE56', '#4BC0C0', '#9966FF'],
+                borderColor: ['#36A2EB', '#FF6384', '#FFCE56', '#4BC0C0', '#9966FF'],
+                borderWidth: 1
+            }]
+        };
+
+        const monedaData = {
+            labels: ['US Dollar', 'Euros', 'Peso Chileno', 'Peso Colombiano', 'Libra Esterlina'],
+            datasets: [{
+                label: 'Frecuencia',
+                data: [3397, 77, 3, 1, 1],
+                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF'],
+                borderColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF'],
+                borderWidth: 1
+            }]
+        };
+
+        const tipoOperacionData = {
+            labels: ['Compra', 'Venta'],
+            datasets: [{
+                label: 'Frecuencia',
+                data: [2746, 733],
+                backgroundColor: ['#36A2EB', '#FF6384'],
+                borderColor: ['#36A2EB', '#FF6384'],
+                borderWidth: 1
+            }]
+        };
+
+        const origenData = {
+            labels: ['Remesa', 'Otros'],
+            datasets: [{
+                label: 'Porcentaje (%)',
+                data: [60.30, 39.70],
+                backgroundColor: ['#FFCE56', '#FF6384'],
+                borderColor: ['#FFCE56', '#FF6384'],
+                borderWidth: 1
+            }]
+        };
+
+        function createChart(ctx, data) {
+            return new Chart(ctx, {
+                type: 'pie',
+                data: data,
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            display: true,
+                            position: 'top',
+                        },
+                        title: {
+                            display: true,
+                            text: 'Porcentaje (%)'
+                        }
+                    }
+                }
+            });
+        }
+
+        createChart(document.getElementById('sexoChart'), sexoData);
+        createChart(document.getElementById('edadChart'), edadData);
+        createChart(document.getElementById('estadoCivilChart'), estadoCivilData);
+        createChart(document.getElementById('ubicacionChart'), ubicacionData);
+        createChart(document.getElementById('monedaChart'), monedaData);
+        createChart(document.getElementById('tipoOperacionChart'), tipoOperacionData);
+        createChart(document.getElementById('origenChart'), origenData);
+    </script>
+</body>
+</html>

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ICA PLAZA SOL</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .chart-container {
+            position: relative;
+            width: 80%;
+            margin: auto;
+            max-width: 600px; /* Ajusta el ancho máximo del contenedor */
+            background-color: white; /* Fondo blanco para el contenedor */
+            padding: 20px; /* Espaciado interno */
+            border-radius: 8px; /* Bordes redondeados */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra para el contenedor */
+        }
+        canvas {
+            max-width: 100%;
+            height: auto;
+        }
+        h1 {
+            text-align: center;
+        }
+        h2 {
+            text-align: center;
+            font-size: 24px; /* Tamaño de fuente para el subtítulo y etiquetas */
+        }
+    </style>
+</head>
+<body>
+    <h1>ICA PLAZA SOL</h1>
+    <h2>Cantidad de muestra: 10408</h2>
+    
+    <div class="chart-container">
+        <h2>Sexo</h2>
+        <canvas id="sexoChart"></canvas>
+    </div>
+    
+    <div class="chart-container">
+        <h2>Rango de Edad</h2>
+        <canvas id="edadChart"></canvas>
+    </div>
+    
+    <div class="chart-container">
+        <h2>Estado Civil</h2>
+        <canvas id="estadoCivilChart"></canvas>
+    </div>
+    
+    <div class="chart-container">
+        <h2>Ubicación</h2>
+        <canvas id="ubicacionChart"></canvas>
+    </div>
+    
+    <div class="chart-container">
+        <h2>Moneda</h2>
+        <canvas id="monedaChart"></canvas>
+    </div>
+    
+    <div class="chart-container">
+        <h2>Tipo de Operación</h2>
+        <canvas id="tipoOperacionChart"></canvas>
+    </div>
+    
+    <div class="chart-container">
+        <h2>Origen</h2>
+        <canvas id="origenChart"></canvas>
+    </div>
+
+    <script>
+        const sexoData = {
+            labels: ['Femenino', 'Masculino'],
+            datasets: [{
+                label: 'Porcentaje (%)',
+                data: [56.68, 43.32],
+                backgroundColor: ['#36A2EB', '#FF6384'],
+                borderColor: ['#36A2EB', '#FF6384'],
+                borderWidth: 1
+            }]
+        };
+
+        const edadData = {
+            labels: ['18-25', '26-35', '36-45', '46-55', '56 a más'],
+            datasets: [{
+                label: 'Porcentaje (%)',
+                data: [1.64, 18.84, 22.19, 17.58, 39.75],
+                backgroundColor: ['#FFCE56', '#FF6384', '#36A2EB', '#4BC0C0', '#9966FF'],
+                borderColor: ['#FFCE56', '#FF6384', '#36A2EB', '#4BC0C0', '#9966FF'],
+                borderWidth: 1
+            }]
+        };
+
+        const estadoCivilData = {
+            labels: ['Solter@', 'Casad@', 'Viud@', 'Divorciad@'],
+            datasets: [{
+                label: 'Porcentaje (%)',
+                data: [69.21, 24.74, 3.48, 2.57],
+                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0'],
+                borderColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0'],
+                borderWidth: 1
+            }]
+        };
+
+        const ubicacionData = {
+            labels: [
+                'ICA', 'PARCONA', 'LA TINGUIÑA', 'SUBTANJALLA', 
+                'SANTIAGO', 'PUEBLO NUEVO', 'LOS AQUIJES', 'SAN ISIDRO', 
+                'SALAS', 'PALPA', 'NAZCA', 'PISCO', 'JESUS MARIA', 
+                'SAN JUAN BAUTISTA', 'CARABAYLLO', 'LIMA', 'TATE', 
+                'CORDOVA', 'LA TINGUIÑA', 'SANTIAGO DE SURCO', 
+                'CALLAO', 'SAN JOSE DE LOS MOLINOS', 'LA VICTORIA', 
+                'SAN JUAN DE MIRAFLORES', 'GROCIO PRADO', 'LA MOLINA', 
+                'SAN MIGUEL', 'CAJARURO', 'VISTA ALEGRE', 'RIMAC', 
+                'ATE', 'PACHACUTEC', 'LOS OLIVOS', 'SURQUILLO', 
+                'LINCE', 'VILLA MARIA DEL TRIUNFO', 'SAN BORJA', 
+                'EL AGUSTINO', 'SAN MARTIN DE PORRES', 'CHALA', 
+                'CHICLAYO', 'PUQUIO', 'CHINCHA ALTA', 'MIRAFLORES', 
+                'EL INGENIO', 'VICTOR LARCO HERRERA', 'MARCONA', 
+                'BARRANCA', 'SAN CRISTOBAL', 'YANACA', 'CHANGUILLO', 
+                'BELLAVISTA', 'INDEPENDENCIA', '0', 'OTOCA', 
+                'PUEBLO LIBRE', 'HUAYTARA', 'CALANGO', 
+                'SAN JOSE DE LOS MOLINOS', 'VILLA EL SALVADOR', 
+                'VENTANILLA', 'SAN ANTONIO DE CUSICANCHA', 'CHORRILLOS', 
+                'TAMBO', 'TACNA', 'SAN LUIS', 'OCUCAJE', 
+                'LURIGANCHO', 'SAN MARTÍN DE PORRES', 'COMAS', 
+                'PARIÑAS', 'RIO GRANDE', 'SAN ANDRES', 
+                'MAGDALENA DEL MAR', 'IMPERIAL', 'BREÑA', 
+                'BARRANCO', 'CANARIA', 'TUPAC AMARU INCA', 
+                'NUEVO IMPERIAL', 'CARMEN DE LA LEGUA REYNOSO', 
+                'VILLA MARÍA DEL TRIUNFO', 'SAN JUAN DE LURIGANCHO', 
+                'SANTIAGO DE CHOCORVOS', 'MARIANO DAMASO BERAUN', 
+                'PUENTE PIEDRA', 'EL TAMBO', 'FLORENCIA DE MORA', 
+                'MARIANO MELGAR', 'ANCON', 'JESÚS MARÍA', 
+                'CHACLACAYO', 'SAN VICENTE DE CAÑETE', 'PICHANAQUI', 
+                'HUMAY', 'ANDAHUAYLAS', 'ACARÍ', 'CARMEN SALCEDO', 
+                'CAMANA', 'HUANUCO', 'TIBILLO', 'SANTA ROSA', 
+                'RÍO GRANDE', 'CHANCHAMAYO', 'IQUITOS', 'NEPEÑA', 
+                'PILPICHACA', 'RUPA-RUPA', 'TRUJILLO', 'LA PERLA', 
+                'SANTA CRUZ', 'HUAC-HUAS', 'SANTA ANITA', 
+                'ACARI', 'HUALHUAS', 'CHAVIÑA', 'NASCA', 
+                'SAN NICOLAS', 'MALA', 'PULLO', 'YAUCA DEL ROSARIO 1/', 
+                'PACHACAMAC', 'VIRU', 'LURIN', 'HUACHO'
+            ],
+            datasets: [{
+                label: 'Porcentaje (%)',
+                data: [
+                    58.74, 6.80, 4.97, 2.89, 
+                    2.46, 2.23, 1.87, 1.38, 
+                    1.19, 1.04, 1.02, 0.76, 
+                    0.72, 0.64, 0.53, 0.53, 
+                    0.53, 0.53, 0.49, 0.40, 
+                    0.40, 0.38, 0.32, 0.32, 
+                    0.32, 0.28, 0.28, 0.23, 
+                    0.21, 0.21, 0.19, 0.19, 
+                    0.19, 0.19, 0.17, 0.17, 
+                    0.17, 0.17, 0.17, 0.15, 
+                    0.15, 0.15, 0.15, 0.15, 
+                    0.15, 0.13, 0.13, 0.13, 
+                    0.13, 0.11, 0.11, 0.11, 
+                    0.11, 0.11, 0.11, 0.11, 
+                    0.11, 0.11, 0.11, 0.11, 
+                    0.11, 0.11, 0.11, 0.11, 
+                    0.11, 0.11, 0.11, 0.11, 
+                    0.11, 0.11, 0.11, 0.11, 
+                    0.11, 0.11, 0.11, 0.11, 
+                    0.11, 0.11, 0.11, 0.11, 
+                    0.11, 0.11, 0.11, 0.11, 
+                    0.11, 0.11, 0.11, 0.11, 
+                    0.11, 0.11, 0.11, 0.11, 
+                    0.11, 0.11, 0.11, 0.11, 
+                    0.11, 0.11, 0.11, 0.11, 
+                    0.11, 0.11, 0.11, 0.11, 
+                    0.11, 0.11, 0.11, 0.11, 
+                    0.11, 0.11, 0.11, 0.11, 
+                    0.11, 0.11, 0.11, 0.11, 
+                    0.11, 0.11, 0.11, 0.11, 
+                    0.11, 0.11, 0.11, 0.11, 
+                    0.11, 0.11, 0.11, 0.11, 
+                    0.11, 0.11, 0.11, 0.11
+                ],
+                backgroundColor: ['#36A2EB', '#FF6384', '#FFCE56', '#4BC0C0', '#9966FF'],
+                borderColor: ['#36A2EB', '#FF6384', '#FFCE56', '#4BC0C0', '#9966FF'],
+                borderWidth: 1
+            }]
+        };
+
+        const monedaData = {
+            labels: ['US Dollar', 'Euros', 'Peso Colombiano', 'Peso Chileno', 'Libra Esterlina'],
+            datasets: [{
+                label: 'Frecuencia',
+                data: [10193, 201, 7, 5, 2],
+                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF'],
+                borderColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF'],
+                borderWidth: 1
+            }]
+        };
+
+        const tipoOperacionData = {
+            labels: ['Compra', 'Venta'],
+            datasets: [{
+                label: 'Frecuencia',
+                data: [6905, 3503],
+                backgroundColor: ['#36A2EB', '#FF6384'],
+                borderColor: ['#36A2EB', '#FF6384'],
+                borderWidth: 1
+            }]
+        };
+
+        const origenData = {
+            labels: ['Remesa', 'Otros'],
+            datasets: [{
+                label: 'Porcentaje (%)',
+                data: [63.72, 36.28],
+                backgroundColor: ['#FFCE56', '#FF6384'],
+                borderColor: ['#FFCE56', '#FF6384'],
+                borderWidth: 1
+            }]
+        };
+
+        function createChart(ctx, data) {
+            return new Chart(ctx, {
+                type: 'pie',
+                data: data,
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            display: true,
+                            position: 'top',
+                        },
+                        title: {
+                            display: true,
+                            text: 'Porcentaje (%)'
+                        }
+                    }
+                }
+            });
+        }
+
+        createChart(document.getElementById('sexoChart'), sexoData);
+        createChart(document.getElementById('edadChart'), edadData);
+        createChart(document.getElementById('estadoCivilChart'), estadoCivilData);
+        createChart(document.getElementById('ubicacionChart'), ubicacionData);
+        createChart(document.getElementById('monedaChart'), monedaData);
+        createChart(document.getElementById('tipoOperacionChart'), tipoOperacionData);
+        createChart(document.getElementById('origenChart'), origenData);
+    </script>
+</body>
+</html>

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAN MIGUEL 3</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .chart-container {
+            position: relative;
+            width: 80%;
+            margin: auto;
+            max-width: 600px; /* Ajusta el ancho máximo del contenedor */
+            background-color: white; /* Fondo blanco para el contenedor */
+            padding: 20px; /* Espaciado interno */
+            border-radius: 8px; /* Bordes redondeados */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra para el contenedor */
+        }
+        canvas {
+            max-width: 100%;
+            height: auto;
+        }
+        h1 {
+            text-align: center;
+        }
+        h2 {
+            text-align: center;
+            font-size: 24px; /* Tamaño de fuente para el subtítulo y etiquetas */
+        }
+    </style>
+</head>
+<body>
+    <h1>SAN MIGUEL 3</h1>
+    <h2>Cantidad de muestra: 21632</h2>
+    
+    <div class="chart-container">
+        <h2>Sexo</h2>
+        <canvas id="sexoChart"></canvas>
+    </div>
+    
+    <div class="chart-container">
+        <h2>Rango de Edad</h2>
+        <canvas id="edadChart"></canvas>
+    </div>
+    
+    <div class="chart-container">
+        <h2>Estado Civil</h2>
+        <canvas id="estadoCivilChart"></canvas>
+    </div>
+    
+    <div class="chart-container">
+        <h2>Ubicación</h2>
+        <canvas id="ubicacionChart"></canvas>
+    </div>
+
+    <script>
+        const sexoData = {
+            labels: ['Masculino', 'Femenino'],
+            datasets: [{
+                label: 'Porcentaje (%)',
+                data: [51.39, 48.61],
+                backgroundColor: ['#36A2EB', '#FF6384'],
+                borderColor: ['#36A2EB', '#FF6384'],
+                borderWidth: 1
+            }]
+        };
+
+        const edadData = {
+            labels: ['18-25', '26-35', '36-45', '46-55', '56 a más'],
+            datasets: [{
+                label: 'Porcentaje (%)',
+                data: [1.04, 12.47, 18.64, 25.12, 42.73],
+                backgroundColor: ['#FFCE56', '#FF6384', '#36A2EB', '#4BC0C0', '#9966FF'],
+                borderColor: ['#FFCE56', '#FF6384', '#36A2EB', '#4BC0C0', '#9966FF'],
+                borderWidth: 1
+            }]
+        };
+
+        const estadoCivilData = {
+            labels: ['Casad@', 'Solter@', 'Divorciad@', 'Viud@'],
+            datasets: [{
+                label: 'Porcentaje (%)',
+                data: [45.60, 45.07, 4.71, 4.62],
+                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0'],
+                borderColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0'],
+                borderWidth: 1
+            }]
+        };
+
+        const ubicacionData = {
+            labels: [
+                'SAN MIGUEL', 'LIMA', 'PUEBLO LIBRE', 
+                'LA PERLA', 'SAN MARTIN DE PORRES', 'CALLAO', 
+                'BELLAVISTA', 'LINCE', 'JESUS MARIA', 
+                'BREÑA', 'MAGDALENA DEL MAR', 'LA PUNTA', 
+                'MIRAFLORES', 'SANTIAGO DE SURCO', 'SAN ISIDRO', 
+                'SAN BORJA', 'LA VICTORIA', 'CARMEN DE LA LEGUA REYNOSO', 
+                'VENTANILLA', 'COMAS', 'LOS OLIVOS', 
+                'RIMAC', 'CHORRILLOS', 'LA MOLINA', 
+                '0', 'CARABAYLLO', 'SAN JUAN DE LURIGANCHO', 
+                'ATE', 'ICA', 'IMPERIAL', 
+                'INDEPENDENCIA', 'PUENTE PIEDRA', 'SAN MARTÍN DE PORRES', 
+                'VILLA MARIA DEL TRIUNFO', 'JESÚS MARÍA', 'CHICLAYO', 
+                'TRUJILLO', 'HUARAL', 'CASTILLA', 
+                'CAJAMARCA', 'PIURA', 'RÍMAC', 
+                'IQUITOS', 'EL AGUSTINO', 'SURQUILLO', 
+                'BREÑA', 'ASIA', 'TARAPOTO', 
+                'SANTA ANITA', 'HUALMAY', 'EL TAMBO', 
+                'BARRANCO', 'SAN JUAN DE MIRAFLORES', 'CHIMBOTE', 
+                'JAUJA', 'CUSCO', 'ANCON', 
+                'JUANJUI', 'VILLA EL SALVADOR', 'HUANCAYO', 
+                'ABANCAY', 'PARAMONGA', 'CALLERIA', 
+                'IZCUCHACA', 'SAN MATEO', 'PATIVILCA', 
+                'NUEVO CHIMBOTE', 'LAMBAYEQUE', 'YARINACOCHA', 
+                'EL ORO', 'LURIN', 'PISCO', 
+                'MOLLENDO', 'SUPE', 'VICTOR LARCO HERRERA', 
+                'CERRO COLORADO', 'SANTA ROSA', 'HUACHO', 
+                'BARRANCA', 'PUNO', 'YANACANCHA', 
+                'SAN SEBASTIAN', 'HUARMEY', 'CHINCHA ALTA', 
+                'WANCHAQ', 'SAN ANDRES', 'VILLA MARÍA DEL TRIUNFO', 
+                'TUMBES', 'SAN JUAN BAUTISTA', 'SAN LUIS', 
+                'TACNA', 'MOCHE', 'TARMA', 
+                'MATALAQUE', 'SULLANA', 'BELEN', 
+                'CHALA', 'VISTA ALEGRE', 'YANAHUARA', 
+                'PUNCHANA', 'CAJATAMBO', 'RICARDO PALMA', 
+                'ECHARATE', 'SUBTANJALLA', 'MACARI', 
+                'PIMENTEL', 'VEINTISEIS DE OCTUBRE', 'HUAMACHUCO', 
+                'URUBAMBA', 'CHILCA', 'HUAQUIRCA', 
+                'SAN NICOLAS', 'VILCAS HUAMAN', 'YAVARI', 
+                'JUAN ESPINOZA MEDRANO', 'PAITA', 'SANTA ANA DE TUSI', 
+                'SUPE PUERTO', 'AWAJUN', 'PARCONA', 
+                'SAN VICENTE DE CAÑETE', 'PUNTA HERMOSA', 'SURCO', 
+                'PUNTA NEGRA', 'QUILCAS', 'HUAMANCACA CHICO', 
+                'PACHACONAS', 'HUAYLLAY', 'CAYMA'
+            ],
+            datasets: [{
+                label: 'Porcentaje (%)',
+                data: [
+                    30.68, 12.56, 10.51, 
+                    7.58, 5.27, 4.32, 
+                    2.54, 2.39, 2.03, 
+                    1.72, 1.53, 1.53, 
+                    1.43, 1.31, 1.15, 
+                    0.90, 0.84, 0.84, 
+                    0.80, 0.69, 0.66, 
+                    0.64, 0.60, 0.55, 
+                    0.52, 0.45, 0.39, 
+                    0.31, 0.28, 0.24, 
+                    0.24, 0.16, 0.16, 
+                    0.16, 0.15, 0.13, 
+                    0.13, 0.12, 0.12, 
+                    0.10, 0.09, 0.09, 
+                    0.09, 0.08, 0.08, 
+                    0.08, 0.08, 0.08, 
+                    0.08, 0.08, 0.08, 
+                    0.08, 0.08, 0.08, 
+                    0.08, 0.08, 0.08, 
+                    0.08, 0.08, 0.08, 
+                    0.08, 0.08, 0.08, 
+                    0.08, 0.08, 0.08, 
+                    0.08, 0.08, 0.08, 
+                    0.08, 0.08, 0.08, 
+                    0.08, 0.08, 0.08, 
+                    0.08, 0.08, 0.08, 
+                    0.08, 0.08, 0.08
+                ],
+                backgroundColor: ['#36A2EB', '#FF6384', '#FFCE56', '#4BC0C0', '#9966FF'],
+                borderColor: ['#36A2EB', '#FF6384', '#FFCE56', '#4BC0C0', '#9966FF'],
+                borderWidth: 1
+            }]
+        };
+
+        function createChart(ctx, data) {
+            return new Chart(ctx, {
+                type: 'pie',
+                data: data,
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            display: true,
+                            position: 'top',
+                        },
+                        title: {
+                            display: true,
+                            text: 'Porcentaje (%)'
+                        }
+                    }
+                }
+            });
+        }
+
+        createChart(document.getElementById('sexoChart'), sexoData);
+        createChart(document.getElementById('edadChart'), edadData);
+        createChart(document.getElementById('estadoCivilChart'), estadoCivilData);
+        createChart(document.getElementById('ubicacionChart'), ubicacionData);
+    </script>
+</body>
+</html>
