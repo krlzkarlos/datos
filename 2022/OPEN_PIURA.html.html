@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Datos OPEN PIURA</title>
+    <title>OPEN PIURA</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         body {
@@ -68,11 +68,11 @@
 
     <script>
         const sexoData = {
-            labels: ['Femenino', 'Masculino', 'Solter@', 'Casad@', 'Divorciad@', 'Viud@'],
+            labels: ['Femenino', 'Masculino'],
             datasets: [{
                 label: 'Porcentaje (%)',
-                data: [28.40, 27.70, 6.37, 2.46, 0.51, 0.18],
-                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF', '#FF9F40'],
+                data: [33.30, 32.31],
+                backgroundColor: ['#FF6384', '#36A2EB'],
             }]
         };
 
@@ -86,20 +86,29 @@
         };
 
         const estadoCivilData = {
-            labels: ['Solter@', 'Casad@', 'Femenino', 'Masculino', 'Viud@', 'Divorciad@'],
+            labels: ['Solter@', 'Casad@', 'Viud@', 'Divorciad@'],
             datasets: [{
                 label: 'Porcentaje (%)',
-                data: [34.78, 19.25, 4.90, 4.61, 1.73, 0.34],
-                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF', '#FF9F40'],
+                data: [41.15, 21.71, 1.90, 0.85],
+                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0'],
             }]
         };
 
         const ubicacionData = {
-            labels: ['CASTILLA', 'PIURA', 'CATACAOS', 'CHULUCANAS', 'SULLANA'],
+            labels: ['CASTILLA', 'PIURA', 'CATACAOS', 'CHULUCANAS', 'SULLANA', 'Otros'],
             datasets: [{
                 label: 'Porcentaje (%)',
-                data: [25.47, 15.06, 2.07, 1.51, 1.04],
-                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF'],
+                data: [25.47, 15.06, 2.07, 1.51, 1.04, 20.44],
+                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF', '#FF9F40'],
+            }]
+        };
+
+        const monedaData = {
+            labels: ['US Dollar', 'Euros', 'Peso Chileno'],
+            datasets: [{
+                label: 'Porcentaje (%)',
+                data: [98.06, 1.82, 0.12],
+                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'],
             }]
         };
 
@@ -107,7 +116,7 @@
             labels: ['Compra', 'Venta'],
             datasets: [{
                 label: 'Porcentaje (%)',
-                data: [60.00, 40.00],
+                data: [63.93, 36.07],
                 backgroundColor: ['#FF6384', '#36A2EB'],
             }]
         };
@@ -116,17 +125,8 @@
             labels: ['Remesa', 'Otros'],
             datasets: [{
                 label: 'Porcentaje (%)',
-                data: [42.00, 58.00],
+                data: [34.11, 65.89],
                 backgroundColor: ['#FF6384', '#36A2EB'],
-            }]
-        };
-
-        const monedaData = {
-            labels: ['US Dollar', 'Euros', 'Peso Chileno'],
-            datasets: [{
-                label: 'Porcentaje (%)',
-                data: [98.50, 1.40, 0.10],
-                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'],
             }]
         };
 

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Datos TUMBES</title>
+    <title>OPEN LA MARINA</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         body {
@@ -25,62 +25,54 @@
         h1 {
             margin-bottom: 10px;
         }
-        h2 {
-            margin-bottom: 20px;
-            font-weight: normal;
-        }
-        .chart-title {
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
     </style>
 </head>
 <body>
-    <h1>TUMBES</h1>
-    <h2>Cantidad de muestra: 13600</h2>
+    <h1>OPEN LA MARINA</h1>
+    <h2>Cantidad de muestra: 12569</h2>
 
     <div class="chart-container">
-        <h2 class="chart-title">Sexo</h2>
+        <h2>Sexo</h2>
         <canvas id="sexoChart"></canvas>
     </div>
 
     <div class="chart-container">
-        <h2 class="chart-title">Rango de Edad</h2>
+        <h2>Rango de Edad</h2>
         <canvas id="edadChart"></canvas>
     </div>
 
     <div class="chart-container">
-        <h2 class="chart-title">Estado Civil</h2>
+        <h2>Estado Civil</h2>
         <canvas id="estadoCivilChart"></canvas>
     </div>
 
     <div class="chart-container">
-        <h2 class="chart-title">Ubicación</h2>
+        <h2>Ubicación</h2>
         <canvas id="ubicacionChart"></canvas>
     </div>
 
     <div class="chart-container">
-        <h2 class="chart-title">Moneda</h2>
+        <h2>Moneda</h2>
         <canvas id="monedaChart"></canvas>
     </div>
 
     <div class="chart-container">
-        <h2 class="chart-title">Tipo de Operación</h2>
-        <canvas id="operacionChart"></canvas>
+        <h2>Tipo de Operación</h2>
+        <canvas id="tipoOperacionChart"></canvas>
     </div>
 
     <div class="chart-container">
-        <h2 class="chart-title">Origen</h2>
+        <h2>Origen</h2>
         <canvas id="origenChart"></canvas>
     </div>
 
     <script>
         const sexoData = {
-            labels: ['Masculino', 'Femenino', 'Solter@', 'Casad@', 'Divorciad@', 'Viud@'],
+            labels: ['Femenino', 'Masculino'],
             datasets: [{
                 label: 'Porcentaje (%)',
-                data: [18.82, 13.72, 4.80, 1.76, 0.28, 0.10],
-                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF', '#FF9F40'],
+                data: [35.85, 27.34],
+                backgroundColor: ['#FF6384', '#36A2EB'],
             }]
         };
 
@@ -88,43 +80,43 @@
             labels: ['18-25', '26-35', '36-45', '46-55', '56 a más'],
             datasets: [{
                 label: 'Porcentaje (%)',
-                data: [1.96, 9.96, 10.21, 8.70, 8.65],
+                data: [1.72, 7.46, 12.24, 16.18, 25.58],
                 backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF'],
             }]
         };
 
         const estadoCivilData = {
-            labels: ['Solter@', 'Casad@', 'Masculino', 'Femenino', 'Viud@', 'Divorciad@'],
+            labels: ['Solter@', 'Casad@', 'Viud@', 'Divorciad@'],
             datasets: [{
                 label: 'Porcentaje (%)',
-                data: [24.28, 7.48, 3.71, 3.23, 0.46, 0.32],
-                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF', '#FF9F40'],
+                data: [30.54, 26.64, 4.02, 1.98],
+                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0'],
             }]
         };
 
         const ubicacionData = {
-            labels: ['TUMBES', 'CORRALES', 'SAN JACINTO', 'ZARUMILLA', 'LA CRUZ', 'Otros'],
+            labels: ['SAN MIGUEL', 'LA PERLA', 'CALLAO', 'BELLAVISTA', 'SAN MARTIN DE PORRES', 'Otros'],
             datasets: [{
                 label: 'Porcentaje (%)',
-                data: [21.72, 2.90, 1.39, 1.09, 1.00, 11.38],
+                data: [28.43, 5.39, 3.52, 2.38, 2.36, 21.12],
                 backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF', '#FF9F40'],
             }]
         };
 
         const monedaData = {
-            labels: ['US Dollar', 'Peso Colombiano', 'Euros'],
+            labels: ['US Dollar', 'Euros', 'Peso Chileno', 'Dolar Canadiense', 'Peso Mexicano'],
             datasets: [{
                 label: 'Porcentaje (%)',
-                data: [98.96, 0.64, 0.40],
-                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'],
+                data: [97.01, 2.61, 0.25, 0.06, 0.06],
+                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF'],
             }]
         };
 
-        const operacionData = {
+        const tipoOperacionData = {
             labels: ['Compra', 'Venta'],
             datasets: [{
                 label: 'Porcentaje (%)',
-                data: [58.47, 41.53],
+                data: [71.76, 28.24],
                 backgroundColor: ['#FF6384', '#36A2EB'],
             }]
         };
@@ -133,7 +125,7 @@
             labels: ['Remesa', 'Otros'],
             datasets: [{
                 label: 'Porcentaje (%)',
-                data: [66.32, 33.68],
+                data: [45.73, 54.27],
                 backgroundColor: ['#FF6384', '#36A2EB'],
             }]
         };
@@ -163,7 +155,7 @@
         createPieChart(document.getElementById('estadoCivilChart'), estadoCivilData);
         createPieChart(document.getElementById('ubicacionChart'), ubicacionData);
         createPieChart(document.getElementById('monedaChart'), monedaData);
-        createPieChart(document.getElementById('operacionChart'), operacionData);
+        createPieChart(document.getElementById('tipoOperacionChart'), tipoOperacionData);
         createPieChart(document.getElementById('origenChart'), origenData);
     </script>
 </body>

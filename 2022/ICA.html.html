@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Datos PIURA REAL PLAZA</title>
+    <title>ICA</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         body {
@@ -28,8 +28,8 @@
     </style>
 </head>
 <body>
-    <h1>PIURA REAL PLAZA</h1>
-    <h2>Cantidad de muestra: 8001</h2>
+    <h1>ICA</h1>
+    <h2>Total Registros: 9017</h2>
 
     <div class="chart-container">
         <h2>Sexo</h2>
@@ -68,11 +68,11 @@
 
     <script>
         const sexoData = {
-            labels: ['Masculino', 'Femenino', 'Solter@', 'Casad@', 'Divorciad@', 'Viud@'],
+            labels: ['Femenino', 'Masculino'],
             datasets: [{
                 label: 'Porcentaje (%)',
-                data: [35.62, 24.43, 6.15, 3.15, 0.74, 0.22],
-                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF', '#FF9F40'],
+                data: [31.83, 25.91],
+                backgroundColor: ['#FF6384', '#36A2EB'],
             }]
         };
 
@@ -80,26 +80,35 @@
             labels: ['18-25', '26-35', '36-45', '46-55', '56 a más'],
             datasets: [{
                 label: 'Porcentaje (%)',
-                data: [2.51, 12.59, 16.40, 15.80, 23.01],
+                data: [2.04, 11.42, 10.62, 10.54, 23.11],
                 backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF'],
             }]
         };
 
         const estadoCivilData = {
-            labels: ['Solter@', 'Casad@', 'Masculino', 'Femenino', 'Viud@', 'Divorciad@'],
+            labels: ['Solter@', 'Casad@', 'Viud@', 'Divorciad@'],
             datasets: [{
                 label: 'Porcentaje (%)',
-                data: [33.95, 23.28, 5.84, 4.42, 2.34, 0.49],
-                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF', '#FF9F40'],
+                data: [39.07, 15.15, 2.08, 1.43],
+                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0'],
             }]
         };
 
         const ubicacionData = {
-            labels: ['PIURA', 'CASTILLA', 'PARIÑAS', 'SULLANA', 'VICE'],
+            labels: ['ICA', 'PARCONA', 'LA TINGUIÑA', 'SUBTANJALLA', 'SANTIAGO', 'Otros'],
             datasets: [{
                 label: 'Porcentaje (%)',
-                data: [36.60, 6.11, 1.44, 1.22, 1.00],
-                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF'],
+                data: [30.20, 3.84, 3.52, 2.28, 1.45, 16.45],
+                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF', '#FF9F40'],
+            }]
+        };
+
+        const monedaData = {
+            labels: ['US Dollar', 'Euros', 'Peso Colombiano'],
+            datasets: [{
+                label: 'Porcentaje (%)',
+                data: [97.47, 2.52, 0.01],
+                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'],
             }]
         };
 
@@ -107,7 +116,7 @@
             labels: ['Compra', 'Venta'],
             datasets: [{
                 label: 'Porcentaje (%)',
-                data: [60.00, 40.00],
+                data: [63.50, 36.50],
                 backgroundColor: ['#FF6384', '#36A2EB'],
             }]
         };
@@ -116,17 +125,8 @@
             labels: ['Remesa', 'Otros'],
             datasets: [{
                 label: 'Porcentaje (%)',
-                data: [42.00, 58.00],
+                data: [48.63, 51.37],
                 backgroundColor: ['#FF6384', '#36A2EB'],
-            }]
-        };
-
-        const monedaData = {
-            labels: ['US Dollar', 'Euros', 'Peso Chileno'],
-            datasets: [{
-                label: 'Porcentaje (%)',
-                data: [98.50, 1.40, 0.10],
-                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'],
             }]
         };
 

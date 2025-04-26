@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Datos PURUCHUCO</title>
+    <title>MALL AREQ 2</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         body {
@@ -28,8 +28,8 @@
     </style>
 </head>
 <body>
-    <h1>PURUCHUCO</h1>
-    <h2>Cantidad de muestra: 2322</h2>
+    <h1>MALL AREQ 2</h1>
+    <h2>Cantidad de muestra: 10177</h2>
 
     <div class="chart-container">
         <h2>Sexo</h2>
@@ -61,13 +61,18 @@
         <canvas id="tipoOperacionChart"></canvas>
     </div>
 
+    <div class="chart-container">
+        <h2>Origen</h2>
+        <canvas id="origenChart"></canvas>
+    </div>
+
     <script>
         const sexoData = {
-            labels: ['Masculino', 'Femenino', 'Solter@', 'Casad@', 'Divorciad@', 'Viud@'],
+            labels: ['Femenino', 'Masculino'],
             datasets: [{
                 label: 'Porcentaje (%)',
-                data: [37.64, 29.97, 8.05, 3.45, 1.59, 0.17],
-                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF', '#FF9F40'],
+                data: [35.71, 33.58],
+                backgroundColor: ['#FF6384', '#36A2EB'],
             }]
         };
 
@@ -75,26 +80,35 @@
             labels: ['18-25', '26-35', '36-45', '46-55', '56 a más'],
             datasets: [{
                 label: 'Porcentaje (%)',
-                data: [2.07, 14.73, 20.46, 23.47, 20.16],
+                data: [2.42, 12.68, 16.68, 16.51, 20.92],
                 backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF'],
             }]
         };
 
         const estadoCivilData = {
-            labels: ['Solter@', 'Casad@', 'Masculino', 'Femenino', 'Viud@'],
+            labels: ['Solter@', 'Casad@', 'Divorciad@', 'Viud@'],
             datasets: [{
                 label: 'Porcentaje (%)',
-                data: [40.09, 25.97, 6.76, 6.50, 1.55],
-                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF'],
+                data: [45.99, 21.04, 1.24, 1.01],
+                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0'],
             }]
         };
 
         const ubicacionData = {
-            labels: ['ATE', 'LA MOLINA', 'SANTA ANITA', 'LURIGANCHO', 'LIMA'],
+            labels: ['PAUCARPATA', 'JOSE LUIS BUSTAMANTE Y RIVERO', 'AREQUIPA', 'SOCABAYA', 'MARIANO MELGAR', 'Otros'],
             datasets: [{
                 label: 'Porcentaje (%)',
-                data: [40.74, 7.15, 3.66, 2.89, 2.63],
-                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF'],
+                data: [14.83, 13.48, 10.04, 3.85, 3.08, 24.01],
+                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF', '#FF9F40'],
+            }]
+        };
+
+        const monedaData = {
+            labels: ['US Dollar', 'Euros', 'Peso Chileno'],
+            datasets: [{
+                label: 'Porcentaje (%)',
+                data: [98.28, 1.70, 0.02],
+                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'],
             }]
         };
 
@@ -102,16 +116,16 @@
             labels: ['Compra', 'Venta'],
             datasets: [{
                 label: 'Porcentaje (%)',
-                data: [91.26, 8.74],
+                data: [60.96, 39.04],
                 backgroundColor: ['#FF6384', '#36A2EB'],
             }]
         };
 
-        const monedaData = {
-            labels: ['US Dollar', 'Euros'],
+        const origenData = {
+            labels: ['Remesa', 'Otros'],
             datasets: [{
                 label: 'Porcentaje (%)',
-                data: [91.26, 8.74],
+                data: [41.16, 58.84],
                 backgroundColor: ['#FF6384', '#36A2EB'],
             }]
         };
@@ -142,6 +156,7 @@
         createPieChart(document.getElementById('ubicacionChart'), ubicacionData);
         createPieChart(document.getElementById('monedaChart'), monedaData);
         createPieChart(document.getElementById('tipoOperacionChart'), tipoOperacionData);
+        createPieChart(document.getElementById('origenChart'), origenData);
     </script>
 </body>
 </html>

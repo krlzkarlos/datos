@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Datos Chiclayo</title>
+    <title>REAL PIURA 2</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         body {
@@ -28,8 +28,8 @@
     </style>
 </head>
 <body>
-    <h1>CHICLAYO</h1>
-    <h2>Cantidad de muestra: 21323</h2>
+    <h1>REAL PIURA 2</h1>
+    <h2>Cantidad de muestra: 20837</h2>
 
     <div class="chart-container">
         <h2>Sexo</h2>
@@ -68,11 +68,11 @@
 
     <script>
         const sexoData = {
-            labels: ['Masculino', 'Femenino', 'Solter@', 'Casad@', 'Divorciad@', 'Viud@'],
+            labels: ['Masculino', 'Femenino'],
             datasets: [{
                 label: 'Porcentaje (%)',
-                data: [40.78, 38.94, 13.07, 5.45, 1.31, 0.46],
-                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF', '#FF9F40'],
+                data: [28.87, 24.72],
+                backgroundColor: ['#FF6384', '#36A2EB'],
             }]
         };
 
@@ -80,35 +80,35 @@
             labels: ['18-25', '26-35', '36-45', '46-55', '56 a más'],
             datasets: [{
                 label: 'Porcentaje (%)',
-                data: [4.58, 21.97, 23.33, 21.98, 28.15],
+                data: [3.69, 12.98, 12.20, 11.95, 12.77],
                 backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF'],
             }]
         };
 
         const estadoCivilData = {
-            labels: ['Solter@', 'Casad@', 'Femenino', 'Masculino', 'Viud@', 'Divorciad@'],
+            labels: ['Solter@', 'Casad@', 'Viud@', 'Divorciad@'],
             datasets: [{
                 label: 'Porcentaje (%)',
-                data: [51.80, 25.71, 10.46, 9.83, 1.97, 0.24],
-                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF', '#FF9F40'],
+                data: [35.68, 15.78, 1.42, 0.71],
+                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0'],
             }]
         };
 
         const ubicacionData = {
-            labels: ['CHICLAYO', 'LA VICTORIA', 'JOSE LEONARDO ORTIZ', 'PIMENTEL', 'MONSEFU'],
+            labels: ['PIURA', 'CASTILLA', '0', 'SULLANA', 'VEINTISEIS DE OCTUBRE', 'Otros'],
             datasets: [{
                 label: 'Porcentaje (%)',
-                data: [45.53, 7.27, 6.54, 3.27, 2.11],
-                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF'],
+                data: [26.61, 6.10, 1.55, 1.47, 0.94, 16.92],
+                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF', '#FF9F40'],
             }]
         };
 
         const monedaData = {
-            labels: ['US Dollar', 'Euros'],
+            labels: ['US Dollar', 'Euros', 'Peso Chileno', 'Peso Colombiano'],
             datasets: [{
                 label: 'Porcentaje (%)',
-                data: [96.91, 3.09],
-                backgroundColor: ['#FF6384', '#36A2EB'],
+                data: [98.16, 1.78, 0.04, 0.02],
+                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0'],
             }]
         };
 
@@ -116,7 +116,7 @@
             labels: ['Compra', 'Venta'],
             datasets: [{
                 label: 'Porcentaje (%)',
-                data: [69.90, 30.10],
+                data: [62.96, 37.04],
                 backgroundColor: ['#FF6384', '#36A2EB'],
             }]
         };
@@ -125,7 +125,7 @@
             labels: ['Remesa', 'Otros'],
             datasets: [{
                 label: 'Porcentaje (%)',
-                data: [21.68, 78.32],
+                data: [38.04, 61.96],
                 backgroundColor: ['#FF6384', '#36A2EB'],
             }]
         };

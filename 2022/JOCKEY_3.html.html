@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Datos PRODUCTORES</title>
+    <title>JOCKEY 3</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         body {
@@ -28,8 +28,8 @@
     </style>
 </head>
 <body>
-    <h1>PRODUCTORES</h1>
-    <h2>Cantidad de muestra: 611</h2>
+    <h1>JOCKEY 3</h1>
+    <h2>Cantidad de muestra: 12328</h2>
 
     <div class="chart-container">
         <h2>Sexo</h2>
@@ -68,11 +68,11 @@
 
     <script>
         const sexoData = {
-            labels: ['Femenino', 'Masculino', 'Solter@', 'Divorciad@', 'Casad@'],
+            labels: ['Masculino', 'Femenino'],
             datasets: [{
                 label: 'Porcentaje (%)',
-                data: [32.57, 32.41, 2.95, 1.47, 0.49],
-                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF'],
+                data: [39.04, 37.45],
+                backgroundColor: ['#FF6384', '#36A2EB'],
             }]
         };
 
@@ -80,25 +80,34 @@
             labels: ['18-25', '26-35', '36-45', '46-55', '56 a más'],
             datasets: [{
                 label: 'Porcentaje (%)',
-                data: [3.76, 10.64, 18.99, 16.86, 19.64],
+                data: [2.42, 11.62, 15.79, 20.24, 26.41],
                 backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF'],
             }]
         };
 
         const estadoCivilData = {
-            labels: ['Solter@', 'Casad@', 'Femenino', 'Masculino', 'Viud@'],
+            labels: ['Solter@', 'Casad@', 'Viud@', 'Divorciad@'],
             datasets: [{
                 label: 'Porcentaje (%)',
-                data: [47.46, 15.71, 2.45, 2.45, 1.80],
-                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF'],
+                data: [38.58, 32.59, 3.18, 2.14],
+                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0'],
             }]
         };
 
         const ubicacionData = {
-            labels: ['SANTA ANITA', 'ATE', 'LA MOLINA', 'LIMA', 'BREÑA'],
+            labels: ['SANTIAGO DE SURCO', 'LA MOLINA', 'ATE', 'SAN BORJA', 'SAN JUAN DE LURIGANCHO', 'Otros'],
             datasets: [{
                 label: 'Porcentaje (%)',
-                data: [16.69, 13.91, 4.09, 2.78, 2.62],
+                data: [12.65, 11.71, 6.80, 5.35, 2.26, 37.73],
+                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF', '#FF9F40'],
+            }]
+        };
+
+        const monedaData = {
+            labels: ['US Dollar', 'Euros', 'Dolar Canadiense', 'Peso Chileno', 'Real Brasilero'],
+            datasets: [{
+                label: 'Porcentaje (%)',
+                data: [87.99, 11.59, 0.17, 0.14, 0.11],
                 backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF'],
             }]
         };
@@ -107,7 +116,7 @@
             labels: ['Compra', 'Venta'],
             datasets: [{
                 label: 'Porcentaje (%)',
-                data: [55.32, 44.68],
+                data: [59.87, 40.13],
                 backgroundColor: ['#FF6384', '#36A2EB'],
             }]
         };
@@ -117,15 +126,6 @@
             datasets: [{
                 label: 'Porcentaje (%)',
                 data: [0, 100],
-                backgroundColor: ['#FF6384', '#36A2EB'],
-            }]
-        };
-
-        const monedaData = {
-            labels: ['US Dollar', 'Euros'],
-            datasets: [{
-                label: 'Porcentaje (%)',
-                data: [98.53, 1.47],
                 backgroundColor: ['#FF6384', '#36A2EB'],
             }]
         };

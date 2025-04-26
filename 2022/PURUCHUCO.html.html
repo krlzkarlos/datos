@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Datos SAN MIGUEL 3</title>
+    <title>PURUCHUCO</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         body {
@@ -25,98 +25,90 @@
         h1 {
             margin-bottom: 10px;
         }
-        h2 {
-            margin-bottom: 20px;
-            font-weight: normal;
-        }
-        .chart-title {
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
     </style>
 </head>
 <body>
-    <h1>SAN MIGUEL 3</h1>
-    <h2>Cantidad de muestra: 24047</h2>
+    <h1>PURUCHUCO</h1>
+    <h2>Total Registros: 2,322</h2>
 
     <div class="chart-container">
-        <h2 class="chart-title">Sexo</h2>
+        <h2>Sexo</h2>
         <canvas id="sexoChart"></canvas>
     </div>
 
     <div class="chart-container">
-        <h2 class="chart-title">Rango de Edad</h2>
+        <h2>Rango de Edad</h2>
         <canvas id="edadChart"></canvas>
     </div>
 
     <div class="chart-container">
-        <h2 class="chart-title">Estado Civil</h2>
+        <h2>Estado Civil</h2>
         <canvas id="estadoCivilChart"></canvas>
     </div>
 
     <div class="chart-container">
-        <h2 class="chart-title">Ubicación</h2>
+        <h2>Ubicación</h2>
         <canvas id="ubicacionChart"></canvas>
     </div>
 
     <div class="chart-container">
-        <h2 class="chart-title">Moneda</h2>
+        <h2>Moneda</h2>
         <canvas id="monedaChart"></canvas>
     </div>
 
     <div class="chart-container">
-        <h2 class="chart-title">Tipo de Operación</h2>
+        <h2>Tipo de Operación</h2>
         <canvas id="tipoOperacionChart"></canvas>
     </div>
 
     <div class="chart-container">
-        <h2 class="chart-title">Origen</h2>
+        <h2>Origen</h2>
         <canvas id="origenChart"></canvas>
     </div>
 
     <script>
         const sexoData = {
-            labels: ['Masculino', 'Femenino', 'Solter@', 'Casad@', 'Divorciad@', 'Viud@'],
+            labels: ['Masculino', 'Femenino'],
             datasets: [{
                 label: 'Porcentaje (%)',
-                data: [33.16, 31.61, 5.42, 3.53, 1.37, 0.34],
-                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF', '#FF9F40'],
+                data: [44.40, 36.48],
+                backgroundColor: ['#FF6384', '#36A2EB'],
             }]
         };
 
         const edadData = {
-            labels: ['56 a más', '46-55', '36-45', '26-35', '18-25'],
+            labels: ['18-25', '26-35', '36-45', '46-55', '56 a más'],
             datasets: [{
                 label: 'Porcentaje (%)',
-                data: [29.84, 17.99, 15.24, 10.57, 1.78],
+                data: [2.07, 14.73, 20.46, 23.47, 20.16],
                 backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF'],
             }]
         };
 
         const estadoCivilData = {
-            labels: ['Solter@', 'Casad@', 'Femenino', 'Masculino', 'Viud@', 'Divorciad@'],
+            labels: ['Solter@', 'Casad@', 'Viud@', 'Divorciad@'],
             datasets: [{
                 label: 'Porcentaje (%)',
-                data: [31.38, 29.54, 5.44, 5.21, 2.88, 0.98],
-                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF', '#FF9F40'],
+                data: [48.15, 29.41, 1.72, 1.59],
+                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0'],
             }]
         };
 
         const ubicacionData = {
-            labels: ['SAN MIGUEL', 'LIMA', 'PUEBLO LIBRE', 'SAN MARTIN DE PORRES', 'LA PERLA'],
+            labels: ['ATE', 'LA MOLINA', 'SANTA ANITA', 'LURIGANCHO', 'LIMA', 'Otros'],
             datasets: [{
                 label: 'Porcentaje (%)',
-                data: [20.74, 8.48, 7.76, 4.38, 4.24],
-                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF'],
+                data: [40.74, 7.15, 3.66, 2.89, 2.63, 23.82],
+                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF', '#FF9F40'],
             }]
         };
 
         const monedaData = {
-            labels: ['US Dollar', 'Euros', 'Peso Chileno', 'Dolar Canadiense', 'Libra Esterlina'],
+            labels: ['US Dollar', 'Euros'],
             datasets: [{
                 label: 'Porcentaje (%)',
-                data: [90.78, 8.77, 0.18, 0.15, 0.12],
-                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF'],
+                data: [91.26, 8.74],
+                backgroundColor: ['#FF6384', '#36A2EB'],
             }]
         };
 
@@ -124,7 +116,7 @@
             labels: ['Compra', 'Venta'],
             datasets: [{
                 label: 'Porcentaje (%)',
-                data: [93.26, 6.74],
+                data: [66.28, 33.72],
                 backgroundColor: ['#FF6384', '#36A2EB'],
             }]
         };
@@ -133,7 +125,7 @@
             labels: ['Remesa', 'Otros'],
             datasets: [{
                 label: 'Porcentaje (%)',
-                data: [15.13, 84.87],
+                data: [4.74, 95.26],
                 backgroundColor: ['#FF6384', '#36A2EB'],
             }]
         };

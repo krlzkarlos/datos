@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Datos MALL AREQ</title>
+    <title>TRUJILLO 4</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         body {
@@ -28,8 +28,8 @@
     </style>
 </head>
 <body>
-    <h1>MALL AREQ</h1>
-    <h2>Cantidad de muestra: 10177</h2>
+    <h1>TRUJILLO 4</h1>
+    <h2>Total Registros: 20953</h2>
 
     <div class="chart-container">
         <h2>Sexo</h2>
@@ -68,11 +68,11 @@
 
     <script>
         const sexoData = {
-            labels: ['Femenino', 'Masculino', 'Solter@', 'Casad@', 'Divorciad@', 'Viud@'],
+            labels: ['Masculino', 'Femenino'],
             datasets: [{
                 label: 'Porcentaje (%)',
-                data: [26.69, 24.87, 11.96, 4.63, 0.94, 0.20],
-                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF', '#FF9F40'],
+                data: [36.52, 32.60],
+                backgroundColor: ['#FF6384', '#36A2EB'],
             }]
         };
 
@@ -80,35 +80,35 @@
             labels: ['18-25', '26-35', '36-45', '46-55', '56 a más'],
             datasets: [{
                 label: 'Porcentaje (%)',
-                data: [2.42, 12.68, 16.68, 16.51, 20.92],
+                data: [2.62, 14.65, 17.46, 15.49, 18.89],
                 backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF'],
             }]
         };
 
         const estadoCivilData = {
-            labels: ['Solter@', 'Casad@', 'Femenino', 'Masculino', 'Viud@', 'Divorciad@'],
+            labels: ['Solter@', 'Casad@', 'Viud@', 'Divorciad@'],
             datasets: [{
                 label: 'Porcentaje (%)',
-                data: [34.04, 16.41, 9.02, 8.71, 0.82, 0.29],
-                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF', '#FF9F40'],
+                data: [47.53, 19.16, 1.52, 0.91],
+                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0'],
             }]
         };
 
         const ubicacionData = {
-            labels: ['PAUCARPATA', 'JOSE LUIS BUSTAMANTE Y RIVERO', 'AREQUIPA', 'SOCABAYA', 'MARIANO MELGAR'],
+            labels: ['TRUJILLO', 'LA ESPERANZA', 'HUANCHACO', 'VICTOR LARCO HERRERA', 'SANTIAGO DE CAO', 'Otros'],
             datasets: [{
                 label: 'Porcentaje (%)',
-                data: [14.83, 13.48, 10.04, 3.85, 3.08],
-                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF'],
+                data: [28.12, 7.44, 5.31, 3.28, 1.44, 23.51],
+                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF', '#FF9F40'],
             }]
         };
 
         const monedaData = {
-            labels: ['US Dollar', 'Euros', 'Peso Chileno'],
+            labels: ['US Dollar', 'Euros', 'Peso Chileno', 'Peso Colombiano', 'Boliviano'],
             datasets: [{
                 label: 'Porcentaje (%)',
-                data: [98.28, 1.70, 0.02],
-                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'],
+                data: [96.05, 3.60, 0.29, 0.05, 0.02],
+                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF'],
             }]
         };
 
@@ -116,7 +116,7 @@
             labels: ['Compra', 'Venta'],
             datasets: [{
                 label: 'Porcentaje (%)',
-                data: [60.96, 39.04],
+                data: [58.76, 41.24],
                 backgroundColor: ['#FF6384', '#36A2EB'],
             }]
         };
@@ -125,7 +125,7 @@
             labels: ['Remesa', 'Otros'],
             datasets: [{
                 label: 'Porcentaje (%)',
-                data: [41.16, 58.84],
+                data: [19.50, 80.50],
                 backgroundColor: ['#FF6384', '#36A2EB'],
             }]
         };

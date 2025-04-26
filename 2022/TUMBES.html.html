@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Datos MALL DEL SUR</title>
+    <title>TUMBES</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         body {
@@ -28,8 +28,8 @@
     </style>
 </head>
 <body>
-    <h1>MALL DEL SUR</h1>
-    <h2>Cantidad de muestra: 7652</h2>
+    <h1>TUMBES</h1>
+    <h2>Total Registros: 13600</h2>
 
     <div class="chart-container">
         <h2>Sexo</h2>
@@ -68,11 +68,11 @@
 
     <script>
         const sexoData = {
-            labels: ['Masculino', 'Femenino', 'Solter@', 'Casad@', 'Divorciad@', 'Viud@'],
+            labels: ['Masculino', 'Femenino'],
             datasets: [{
                 label: 'Porcentaje (%)',
-                data: [33.55, 29.56, 5.97, 3.21, 1.29, 0.38],
-                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF', '#FF9F40'],
+                data: [22.53, 16.95],
+                backgroundColor: ['#FF6384', '#36A2EB'],
             }]
         };
 
@@ -80,34 +80,34 @@
             labels: ['18-25', '26-35', '36-45', '46-55', '56 a más'],
             datasets: [{
                 label: 'Porcentaje (%)',
-                data: [2.80, 15.62, 18.94, 18.02, 18.60],
+                data: [1.96, 9.96, 10.21, 8.70, 8.65],
                 backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF'],
             }]
         };
 
         const estadoCivilData = {
-            labels: ['Solter@', 'Casad@', 'Femenino', 'Masculino', 'Viud@', 'Divorciad@'],
+            labels: ['Solter@', 'Casad@', 'Divorciad@', 'Viud@'],
             datasets: [{
                 label: 'Porcentaje (%)',
-                data: [41.26, 20.33, 5.45, 5.41, 1.46, 0.05],
-                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF', '#FF9F40'],
+                data: [29.08, 9.24, 0.60, 0.56],
+                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0'],
             }]
         };
 
         const ubicacionData = {
-            labels: ['SAN JUAN DE MIRAFLORES', 'VILLA MARIA DEL TRIUNFO', 'SANTIAGO DE SURCO', 'VILLA EL SALVADOR', 'LIMA'],
+            labels: ['TUMBES', 'CORRALES', 'SAN JACINTO', 'ZARUMILLA', 'LA CRUZ', 'Otros'],
             datasets: [{
                 label: 'Porcentaje (%)',
-                data: [22.73, 8.14, 7.29, 6.60, 3.07],
-                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF'],
+                data: [21.72, 2.90, 1.39, 1.09, 1.00, 11.38],
+                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF', '#FF9F40'],
             }]
         };
 
         const monedaData = {
-            labels: ['US Dollar', 'Euros', 'Peso Chileno'],
+            labels: ['US Dollar', 'Peso Colombiano', 'Euros'],
             datasets: [{
                 label: 'Porcentaje (%)',
-                data: [98.50, 1.40, 0.10],
+                data: [98.96, 0.64, 0.40],
                 backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'],
             }]
         };
@@ -116,7 +116,7 @@
             labels: ['Compra', 'Venta'],
             datasets: [{
                 label: 'Porcentaje (%)',
-                data: [60.00, 40.00],
+                data: [58.47, 41.53],
                 backgroundColor: ['#FF6384', '#36A2EB'],
             }]
         };
@@ -125,7 +125,7 @@
             labels: ['Remesa', 'Otros'],
             datasets: [{
                 label: 'Porcentaje (%)',
-                data: [42.00, 58.00],
+                data: [66.32, 33.68],
                 backgroundColor: ['#FF6384', '#36A2EB'],
             }]
         };

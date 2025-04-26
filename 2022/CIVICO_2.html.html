@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Datos PRO</title>
+    <title>CIVICO 2</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         body {
@@ -28,8 +28,8 @@
     </style>
 </head>
 <body>
-    <h1>PRO</h1>
-    <h2>Cantidad de muestra: 3631</h2>
+    <h1>CIVICO 2</h1>
+    <h2>Total Registros: 7,113</h2>
 
     <div class="chart-container">
         <h2>Sexo</h2>
@@ -68,11 +68,11 @@
 
     <script>
         const sexoData = {
-            labels: ['Masculino', 'Femenino', 'Solter@', 'Casad@', 'Divorciad@', 'Viud@'],
+            labels: ['Masculino', 'Femenino'],
             datasets: [{
                 label: 'Porcentaje (%)',
-                data: [34.73, 25.14, 8.59, 5.10, 1.51, 0.28],
-                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF', '#FF9F40'],
+                data: [49.60, 29.14],
+                backgroundColor: ['#FF6384', '#36A2EB'],
             }]
         };
 
@@ -80,25 +80,34 @@
             labels: ['18-25', '26-35', '36-45', '46-55', '56 a más'],
             datasets: [{
                 label: 'Porcentaje (%)',
-                data: [1.29, 10.99, 21.07, 18.34, 23.63],
+                data: [2.17, 16.21, 17.67, 20.58, 22.09],
                 backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF'],
             }]
         };
 
         const estadoCivilData = {
-            labels: ['Solter@', 'Casad@', 'Masculino', 'Femenino', 'Viud@', 'Divorciad@'],
+            labels: ['Solter@', 'Casad@', 'Viud@', 'Divorciad@'],
             datasets: [{
                 label: 'Porcentaje (%)',
-                data: [35.47, 21.67, 8.81, 6.66, 2.37, 0.36],
-                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF', '#FF9F40'],
+                data: [49.98, 24.98, 2.05, 1.73],
+                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0'],
             }]
         };
 
         const ubicacionData = {
-            labels: ['COMAS', 'LOS OLIVOS', 'SAN MARTIN DE PORRES', 'PUENTE PIEDRA', 'CARABAYLLO'],
+            labels: ['LIMA', 'SAN JUAN DE LURIGANCHO', 'SAN MARTIN DE PORRES', 'RIMAC', 'JOSE LEONARDO ORTIZ', 'Otros'],
             datasets: [{
                 label: 'Porcentaje (%)',
-                data: [17.21, 13.30, 8.40, 6.55, 2.92],
+                data: [14.62, 5.20, 3.47, 3.42, 2.84, 49.19],
+                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF', '#FF9F40'],
+            }]
+        };
+
+        const monedaData = {
+            labels: ['US Dollar', 'Euros', 'Real Brasilero', 'Peso Chileno', 'Peso Colombiano'],
+            datasets: [{
+                label: 'Porcentaje (%)',
+                data: [92.80, 6.47, 0.31, 0.21, 0.21],
                 backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF'],
             }]
         };
@@ -107,7 +116,7 @@
             labels: ['Compra', 'Venta'],
             datasets: [{
                 label: 'Porcentaje (%)',
-                data: [60.00, 40.00],
+                data: [55.34, 44.66],
                 backgroundColor: ['#FF6384', '#36A2EB'],
             }]
         };
@@ -116,17 +125,8 @@
             labels: ['Remesa', 'Otros'],
             datasets: [{
                 label: 'Porcentaje (%)',
-                data: [42.00, 58.00],
+                data: [0, 100],
                 backgroundColor: ['#FF6384', '#36A2EB'],
-            }]
-        };
-
-        const monedaData = {
-            labels: ['US Dollar', 'Euros', 'Peso Chileno'],
-            datasets: [{
-                label: 'Porcentaje (%)',
-                data: [98.50, 1.40, 0.10],
-                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'],
             }]
         };
 

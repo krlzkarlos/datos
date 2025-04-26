@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Datos REAL PIURA 2</title>
+    <title>PRODUCTORES</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         body {
@@ -25,62 +25,54 @@
         h1 {
             margin-bottom: 10px;
         }
-        h2 {
-            margin-bottom: 20px;
-            font-weight: normal;
-        }
-        .chart-title {
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
     </style>
 </head>
 <body>
-    <h1>REAL PIURA 2</h1>
-    <h2>Cantidad de muestra: 20837</h2>
+    <h1>PRODUCTORES</h1>
+    <h2>Cantidad de muestra: 611</h2>
 
     <div class="chart-container">
-        <h2 class="chart-title">Sexo</h2>
+        <h2>Sexo</h2>
         <canvas id="sexoChart"></canvas>
     </div>
 
     <div class="chart-container">
-        <h2 class="chart-title">Rango de Edad</h2>
+        <h2>Rango de Edad</h2>
         <canvas id="edadChart"></canvas>
     </div>
 
     <div class="chart-container">
-        <h2 class="chart-title">Estado Civil</h2>
+        <h2>Estado Civil</h2>
         <canvas id="estadoCivilChart"></canvas>
     </div>
 
     <div class="chart-container">
-        <h2 class="chart-title">Ubicación</h2>
+        <h2>Ubicación</h2>
         <canvas id="ubicacionChart"></canvas>
     </div>
 
     <div class="chart-container">
-        <h2 class="chart-title">Moneda</h2>
+        <h2>Moneda</h2>
         <canvas id="monedaChart"></canvas>
     </div>
 
     <div class="chart-container">
-        <h2 class="chart-title">Tipo de Operación</h2>
+        <h2>Tipo de Operación</h2>
         <canvas id="tipoOperacionChart"></canvas>
     </div>
 
     <div class="chart-container">
-        <h2 class="chart-title">Origen</h2>
+        <h2>Origen</h2>
         <canvas id="origenChart"></canvas>
     </div>
 
     <script>
         const sexoData = {
-            labels: ['Masculino', 'Femenino', 'Solter@', 'Casad@', 'Divorciad@', 'Viud@'],
+            labels: ['Femenino', 'Masculino'],
             datasets: [{
                 label: 'Porcentaje (%)',
-                data: [24.57, 20.81, 5.44, 2.20, 0.37, 0.19],
-                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF', '#FF9F40'],
+                data: [35.02, 34.86],
+                backgroundColor: ['#FF6384', '#36A2EB'],
             }]
         };
 
@@ -88,26 +80,26 @@
             labels: ['18-25', '26-35', '36-45', '46-55', '56 a más'],
             datasets: [{
                 label: 'Porcentaje (%)',
-                data: [3.69, 12.98, 12.20, 11.95, 12.77],
+                data: [3.76, 10.64, 18.99, 16.86, 19.64],
                 backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF'],
             }]
         };
 
         const estadoCivilData = {
-            labels: ['Solter@', 'Casad@', 'Masculino', 'Femenino', 'Viud@', 'Divorciad@'],
+            labels: ['Solter@', 'Casad@', 'Viud@', 'Divorciad@'],
             datasets: [{
                 label: 'Porcentaje (%)',
-                data: [30.23, 13.58, 4.30, 3.90, 1.22, 0.34],
-                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF', '#FF9F40'],
+                data: [50.41, 16.20, 1.80, 1.47],
+                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0'],
             }]
         };
 
         const ubicacionData = {
-            labels: ['PIURA', 'CASTILLA', 'SULLANA', 'VEINTISEIS DE OCTUBRE', 'PARIÑAS', 'CATACAOS', 'TRUJILLO', 'PAITA', 'SANTIAGO DE SURCO', 'LIMA'],
+            labels: ['SANTA ANITA', 'ATE', 'LA MOLINA', 'LIMA', 'BREÑA', 'Otros'],
             datasets: [{
                 label: 'Porcentaje (%)',
-                data: [26.61, 6.10, 1.47, 0.94, 0.91, 0.84, 0.74, 0.73, 0.59, 0.28],
-                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF', '#FF9F40', '#FF9F80', '#FF6384', '#36A2EB', '#FFCE56'],
+                data: [16.69, 13.91, 4.09, 2.78, 2.62, 29.79],
+                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF', '#FF9F40'],
             }]
         };
 
@@ -115,7 +107,7 @@
             labels: ['US Dollar', 'Euros'],
             datasets: [{
                 label: 'Porcentaje (%)',
-                data: [91.26, 8.74],
+                data: [98.53, 1.47],
                 backgroundColor: ['#FF6384', '#36A2EB'],
             }]
         };
@@ -124,7 +116,7 @@
             labels: ['Compra', 'Venta'],
             datasets: [{
                 label: 'Porcentaje (%)',
-                data: [91.26, 8.74],
+                data: [55.32, 44.68],
                 backgroundColor: ['#FF6384', '#36A2EB'],
             }]
         };
@@ -133,7 +125,7 @@
             labels: ['Remesa', 'Otros'],
             datasets: [{
                 label: 'Porcentaje (%)',
-                data: [13.13, 86.87],
+                data: [42.72, 57.28],
                 backgroundColor: ['#FF6384', '#36A2EB'],
             }]
         };
