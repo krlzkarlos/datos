@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CUSCO 2</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            text-align: center;
+        }
+        .chart-container {
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 600px;
+            background-color: #f9f9f9;
+        }
+        canvas {
+            max-width: 100%;
+        }
+        h1 {
+            margin-bottom: 10px;
+        }
+        h2 {
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>CUSCO 2</h1>
+    <h2>Total Registros: 7,877</h2>
+
+    <div class="chart-container">
+        <h2>Sexo</h2>
+        <canvas id="sexoChart"></canvas>
+    </div>
+
+    <div class="chart-container">
+        <h2>Rango de Edad</h2>
+        <canvas id="edadChart"></canvas>
+    </div>
+
+    <div class="chart-container">
+        <h2>Estado Civil</h2>
+        <canvas id="estadoCivilChart"></canvas>
+    </div>
+
+    <div class="chart-container">
+        <h2>Ubicación</h2>
+        <canvas id="ubicacionChart"></canvas>
+    </div>
+
+    <div class="chart-container">
+        <h2>Moneda</h2>
+        <canvas id="monedaChart"></canvas>
+    </div>
+
+    <div class="chart-container">
+        <h2>Tipo de Operación</h2>
+        <canvas id="tipoOperacionChart"></canvas>
+    </div>
+
+    <div class="chart-container">
+        <h2>Origen</h2>
+        <canvas id="origenChart"></canvas>
+    </div>
+
+    <script>
+        const sexoData = {
+            labels: ['Masculino', 'Femenino'],
+            datasets: [{
+                label: 'Porcentaje (%)',
+                data: [47.25, 41.82],
+                backgroundColor: ['#FF6384', '#36A2EB'],
+            }]
+        };
+
+        const edadData = {
+            labels: ['18-25', '26-35', '36-45', '46-55', '56 a más'],
+            datasets: [{
+                label: 'Porcentaje (%)',
+                data: [4.66, 16.03, 21.26, 23.57, 23.52],
+                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF'],
+            }]
+        };
+
+        const estadoCivilData = {
+            labels: ['Solter@', 'Casad@', 'Divorciad@', 'Viud@'],
+            datasets: [{
+                label: 'Porcentaje (%)',
+                data: [55.31, 29.21, 2.68, 1.87],
+                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0'],
+            }]
+        };
+
+        const ubicacionData = {
+            labels: ['CUSCO', 'WANCHAQ', 'SAN SEBASTIAN', 'SANTIAGO', 'SAN JERONIMO', 'Otros'],
+            datasets: [{
+                label: 'Porcentaje (%)',
+                data: [22.86, 21.91, 7.05, 5.50, 3.03, 28.61],
+                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF', '#FF9F40'],
+            }]
+        };
+
+        const monedaData = {
+            labels: ['USD', 'EUR', 'BRL', 'COP', 'CAD'],
+            datasets: [{
+                label: 'Porcentaje (%)',
+                data: [97.61, 2.16, 0.15, 0.04, 0.04],
+                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF'],
+            }]
+        };
+
+        const tipoOperacionData = {
+            labels: ['Compra', 'Venta'],
+            datasets: [{
+                label: 'Porcentaje (%)',
+                data: [70.06, 29.94],
+                backgroundColor: ['#FF6384', '#36A2EB'],
+            }]
+        };
+
+        const origenData = {
+            labels: ['Remesa', 'Otros'],
+            datasets: [{
+                label: 'Porcentaje (%)',
+                data: [20.26, 79.74],
+                backgroundColor: ['#FF6384', '#36A2EB'],
+            }]
+        };
+
+        function createPieChart(ctx, data) {
+            return new Chart(ctx, {
+                type: 'pie',
+                data: data,
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            display: true,
+                            position: 'top',
+                        },
+                        title: {
+                            display: true,
+                            text: 'Porcentaje (%)'
+                        }
+                    }
+                }
+            });
+        }
+
+        createPieChart(document.getElementById('sexoChart'), sexoData);
+        createPieChart(document.getElementById('edadChart'), edadData);
+        createPieChart(document.getElementById('estadoCivilChart'), estadoCivilData);
+        createPieChart(document.getElementById('ubicacionChart'), ubicacionData);
+        createPieChart(document.getElementById('monedaChart'), monedaData);
+        createPieChart(document.getElementById('tipoOperacionChart'), tipoOperacionData);
+        createPieChart(document.getElementById('origenChart'), origenData);
+    </script>
+</body>
+</html>
