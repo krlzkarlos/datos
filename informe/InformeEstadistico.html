@@ -1,0 +1,171 @@
+<html>
+  <head>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        margin: 20px;
+        color: #333;
+      }
+      h1 {
+        color: #2c3e50;
+        text-align: center;
+      }
+      h3 {
+        color: #2980b9;
+        border-bottom: 2px solid #2980b9;
+        padding-bottom: 5px;
+      }
+      ul {
+        list-style-type: disc;
+        margin-left: 20px;
+      }
+      p {
+        margin: 10px 0;
+      }
+      strong {
+        color: #e74c3c;
+      }
+      em {
+        color: #8e44ad;
+      }
+      .formula {
+        font-family: "Courier New", Courier, monospace;
+        background-color: #f4f4f4;
+        padding: 5px;
+        border-radius: 4px;
+        display: inline-block;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Informe Estadistico</h1>
+    <p>
+      A continuación se presentan las variables consideradas en el análisis,
+      junto con su clasificación:
+    </p>
+    <ul>
+      <li><strong>Agencia</strong>: Categórica nominal</li>
+      <li>
+        <strong>Sexo</strong>: Categórica nominal (opciones: “Femenino” /
+        “Masculino”)
+      </li>
+      <li>
+        <strong>Nacimiento</strong>: Fecha (derivada a edad, que es numérica
+        continua, y luego categorizada)
+      </li>
+      <li>
+        <strong>Estado Civil</strong>: Categórica nominal (códigos: S, C, V, D)
+      </li>
+      <li><strong>Ubigeo</strong>: Categórica nominal</li>
+      <li><strong>Operación</strong>: Categórica nominal (divisas)</li>
+      <li>
+        <strong>Transacción</strong>: Categórica nominal (opciones: “Compra” /
+        “Venta”)
+      </li>
+      <li><strong>Origen</strong>: Categórica nominal (se destaca “Remesa”)</li>
+    </ul>
+    <p>Para cada agencia:</p>
+    <ul>
+      <li>
+        Se extraen todos los registros donde
+        <strong>Variable Agencia</strong> coincide con el nombre de la agencia.
+        El tamaño de la muestra se denomina <strong>NN</strong>.
+      </li>
+    </ul>
+    <h3>Distribución de Sexo</h3>
+    <ul>
+      <li>
+        <strong>Conteo</strong> de “Femenino” y “Masculino” en la base de datos.
+      </li>
+      <li><strong>Conversión a porcentaje</strong> sobre NN:</li>
+      <p class="formula">
+        P<sub>Sexo</sub> = (N<sub>{sexo=x}</sub> / N) × 100%
+      </p>
+    </ul>
+    <h3>Rangos de Edad</h3>
+    <ul>
+      <li>
+        Convertimos “nacimiento” a fecha y definimos fecha de corte
+        <em>t<sub>0</sub> = 30-mar-2025</em>.
+      </li>
+      <li>Calculamos la edad aproximada:</li>
+      <p class="formula">
+        edad<sub>i</sub> = (t<sub>0</sub> - nacimiento<sub>i</sub>) / 365.25
+        días
+      </p>
+      <li>Clasificamos en intervalos [18,25], [26,35], …, [56,+∞).</li>
+      <li>Cada rango se transforma en porcentaje sobre NN.</li>
+    </ul>
+    <h3>Estado Civil</h3>
+    <ul>
+      <li>Frecuencia de códigos {S, C, V, D} en la base de datos.</li>
+      <li>Porcentaje sobre NN.</li>
+    </ul>
+    <h3>Ubicaciones (TOP 5 + Otros)</h3>
+    <ul>
+      <li>Orden descendente por frecuencia de “ubigeo” en la base de datos.</li>
+      <li>
+        Selección de las 5 más frecuentes; el resto se agrupa como “Otros”.
+      </li>
+      <li>Porcentajes sobre NN.</li>
+    </ul>
+    <h3>Ranking de Monedas (TOP 5)</h3>
+    <ul>
+      <li>
+        Extraemos las 5 divisas más frecuentes de la columna “OPERACIÓN” en la
+        base de datos.
+      </li>
+      <li>
+        Para cada una, calculamos su frecuencia y su porcentaje relativo al
+        total de esas cinco:
+      </li>
+      <p class="formula">
+        P<sub>moneda</sub> = (N<sub>{operación=m}</sub> / ∑<sub>k=1</sub
+        ><sup>5</sup> N<sub>{operación=k}</sub>) × 100%
+      </p>
+    </ul>
+    <h3>Tipo de Operación</h3>
+    <ul>
+      <li>
+        Frecuencias de “Compra” y “Venta” registradas en la base de datos.
+      </li>
+      <li>
+        Porcentajes relativos al total de operaciones registradas (no nulas).
+      </li>
+    </ul>
+    <h3>Origen de Remesas</h3>
+    <ul>
+      <li>
+        Conteo de registros donde “ORIGEN” = “Remesa” en la base de datos.
+      </li>
+      <li>Porcentaje sobre NN:</li>
+      <p class="formula">
+        P<sub>Remesa</sub> = (N<sub>{Remesa}</sub> / N) × 100%
+      </p>
+    </ul>
+    <h3>Estadísticos Descriptivos Iniciales</h3>
+    <p>
+      Para cada agencia, se calculó lo siguiente antes de crear las pestañas:
+    </p>
+    <ul>
+      <li>
+        <strong>NN</strong>: Número total de registros (incluye valores nulos).
+      </li>
+      <li>
+        <strong>Conteos y Porcentaje de Valores Nulos</strong>: Se realizó un
+        análisis por columna clave.
+      </li>
+      <li>
+        <strong>Variables Continuas (Edad)</strong>: Se calcularon la media,
+        mediana, desviación estándar y rango.
+      </li>
+    </ul>
+    <h3>Flujo de Cálculo por Pestaña</h3>
+    <p>
+      Se recomienda consultar las explicaciones detalladas anteriores sobre
+      porcentajes y cortes de edad para una comprensión más profunda del flujo
+      de cálculo.
+    </p>
+  </body>
+</html>
