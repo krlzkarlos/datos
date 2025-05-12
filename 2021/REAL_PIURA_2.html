@@ -1,252 +1,374 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>REAL PIURA 2</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-        .chart-container {
-            position: relative;
-            width: 80%;
-            margin: auto;
-            max-width: 600px; /* Ajusta el ancho máximo del contenedor */
-            background-color: white; /* Fondo blanco para el contenedor */
-            padding: 20px; /* Espaciado interno */
-            border-radius: 8px; /* Bordes redondeados */
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra para el contenedor */
-        }
-        canvas {
-            max-width: 100%;
-            height: auto;
-        }
-        h1 {
-            text-align: center;
-        }
-        h2 {
-            text-align: center;
-            font-size: 24px; /* Tamaño de fuente para el subtítulo y etiquetas */
-        }
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        padding: 0;
+        background-color: #f4f4f4;
+      }
+      .chart-container {
+        position: relative;
+        width: 80%;
+        margin: auto;
+        max-width: 600px; /* Ajusta el ancho máximo del contenedor */
+        background-color: white; /* Fondo blanco para el contenedor */
+        padding: 20px; /* Espaciado interno */
+        border-radius: 8px; /* Bordes redondeados */
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra para el contenedor */
+      }
+      canvas {
+        max-width: 100%;
+        height: auto;
+      }
+      h1 {
+        text-align: center;
+      }
+      h2 {
+        text-align: center;
+        font-size: 24px; /* Tamaño de fuente para el subtítulo y etiquetas */
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <h1>REAL PIURA 2</h1>
     <h2>Cantidad de muestra: 15250</h2>
-    
+
     <div class="chart-container">
-        <h2>Sexo</h2>
-        <canvas id="sexoChart"></canvas>
+      <h2>Sexo</h2>
+      <canvas id="sexoChart"></canvas>
     </div>
-    
+
     <div class="chart-container">
-        <h2>Rango de Edad</h2>
-        <canvas id="edadChart"></canvas>
+      <h2>Rango de Edad</h2>
+      <canvas id="edadChart"></canvas>
     </div>
-    
+
     <div class="chart-container">
-        <h2>Estado Civil</h2>
-        <canvas id="estadoCivilChart"></canvas>
+      <h2>Estado Civil</h2>
+      <canvas id="estadoCivilChart"></canvas>
     </div>
-    
+
     <div class="chart-container">
-        <h2>Ubicación</h2>
-        <canvas id="ubicacionChart"></canvas>
+      <h2>Ubicación</h2>
+      <canvas id="ubicacionChart"></canvas>
     </div>
-    
+
     <div class="chart-container">
-        <h2>Moneda</h2>
-        <canvas id="monedaChart"></canvas>
+      <h2>Moneda</h2>
+      <canvas id="monedaChart"></canvas>
     </div>
-    
+
     <div class="chart-container">
-        <h2>Tipo de Operación</h2>
-        <canvas id="tipoOperacionChart"></canvas>
+      <h2>Tipo de Operación</h2>
+      <canvas id="tipoOperacionChart"></canvas>
     </div>
-    
+
     <div class="chart-container">
-        <h2>Origen</h2>
-        <canvas id="origenChart"></canvas>
+      <h2>Origen</h2>
+      <canvas id="origenChart"></canvas>
     </div>
 
     <script>
-        const sexoData = {
-            labels: ['Masculino', 'Femenino'],
-            datasets: [{
-                label: 'Porcentaje (%)',
-                data: [54.25, 45.75],
-                backgroundColor: ['#36A2EB', '#FF6384'],
-                borderColor: ['#36A2EB', '#FF6384'],
-                borderWidth: 1
-            }]
-        };
+      const sexoData = {
+        labels: ["Masculino", "Femenino"],
+        datasets: [
+          {
+            label: "Porcentaje (%)",
+            data: [54.25, 45.75],
+            backgroundColor: ["#36A2EB", "#FF6384"],
+            borderColor: ["#36A2EB", "#FF6384"],
+            borderWidth: 1,
+          },
+        ],
+      };
 
-        const edadData = {
-            labels: ['18-25', '26-35', '36-45', '46-55', '56 a más'],
-            datasets: [{
-                label: 'Porcentaje (%)',
-                data: [2.99, 22.81, 26.82, 23.49, 23.89],
-                backgroundColor: ['#FFCE56', '#FF6384', '#36A2EB', '#4BC0C0', '#9966FF'],
-                borderColor: ['#FFCE56', '#FF6384', '#36A2EB', '#4BC0C0', '#9966FF'],
-                borderWidth: 1
-            }]
-        };
-
-        const estadoCivilData = {
-            labels: ['Solter@', 'Casad@', 'Viud@', 'Divorciad@'],
-            datasets: [{
-                label: 'Porcentaje (%)',
-                data: [65.10, 31.58, 1.70, 1.62],
-                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0'],
-                borderColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0'],
-                borderWidth: 1
-            }]
-        };
-
-        const ubicacionData = {
-            labels: [
-                'PIURA', 'CASTILLA', 'VEINTISEIS DE OCTUBRE', 
-                 'SULLANA', 'CATACAOS', 
-                'PARIÑAS', 'SANTIAGO DE SURCO', 'PAITA', 
-                'VICE', 'CHULUCANAS', 'TRUJILLO', 
-                'CHICLAYO', 'LIMA', 'LAS LOMAS', 
-                'CALLAO', 'TAMBO GRANDE', 'TUMBES', 
-                'SUYO', 'LA MOLINA', 'AYABACA', 
-                'CHORRILLOS', 'COLAN', 'LA UNION', 
-                'VILLA EL SALVADOR', 'SAN VICENTE DE CAÑETE', 'EL ALTO', 
-                'SAN MIGUEL', 'SAN MARTIN DE PORRES', 'SECHURA', 
-                'LA ARENA', 'ETEN PUERTO', 'YURIMAGUAS', 
-                'MIRAFLORES', 'BELLAVISTA', 'SANTA MARIA', 
-                'LOS OLIVOS', 'SAN ISIDRO', 'SAN BORJA', 
-                'SURQUILLO', 'COMAS', 'VENTANILLA', 
-                'VILLA MARIA DEL TRIUNFO', 'LOS ORGANOS', 'PAIMAS', 
-                'EL TALLAN', 'LA MATANZA', 'EL CARMEN DE LA FRONTERA', 
-                'SANTO DOMINGO', 'SAN MIGUEL DE EL FAIQUE', 'LAMBAYEQUE', 
-                'FRIAS', 'CALLERIA', 'TARAPOTO', 
-                'LURIN', 'CARABAYLLO', 'BUENOS AIRES', 
-                'SICCHEZ', 'BAGUA', 'ATE', 
-                'LA BREA', 'AMOTAPE', 'MANCORA', 
-                'JILILI', 'PARIÑAS', 'ANCON', 
-                'SAN JUAN DE LURIGANCHO', 'INDEPENDENCIA', 'JOSE LEONARDO ORTIZ', 
-                'SANTA ANITA', 'PUENTE PIEDRA', 'CUSCO', 
-                'VICTOR LARCO HERRERA', 'SAN JUAN DE MIRAFLORES', 'LINCE', 
-                'PUCALA', 'CURA MORI', 'CAJAMARCA', 
-                'MARCAVELICA', 'RIMAC', 'CARMEN DE LA LEGUA REYNOSO', 
-                'MORROPON', 'CHIMBOTE', 'NUEVO CHIMBOTE', 
-                'MONTERO', 'MONSEFU', 'LA VICTORIA', 
-                'BELLAVISTA DE LA UNION', 'MARIANO MELGAR', 'LURIGANCHO', 
-                'LAGUNAS', 'SAN MARTÍN DE PORRES', 'LA ESPERANZA', 
-                'HUARAL', 'RINCONADA LLICUAR', 'ETEN', 
-                'CORIS', 'PIMENTEL', 'JESUS MARIA', 
-                'LA UNIÓN', 'QUEROCOTILLO', 'SAN LUIS', 
-                'FERREÑAFE', 'PACASMAYO', 'SUBTANJALLA', 
-                'SANTA CATALINA DE MOSSA', 'QUERECOTILLO', 'SALITRAL', 
-                'SANTA ANA', 'TAMARINDO', 'ZORRITOS', 
-                'HUAURA', 'PAMPAS DE HOSPITAL', 'CANCHAQUE', 
-                'HUAQUIRCA', 'CHAO', 'MIGUEL CHECA', 
-                'PARCONA', 'CHACCHO', 'SANTA ROSA', 
-                'HUANUCO', 'MAGDALENA DEL MAR', 'PALCAZU'
+      const edadData = {
+        labels: ["18-25", "26-35", "36-45", "46-55", "56 a más"],
+        datasets: [
+          {
+            label: "Porcentaje (%)",
+            data: [2.99, 22.81, 26.82, 23.49, 23.89],
+            backgroundColor: [
+              "#FFCE56",
+              "#FF6384",
+              "#36A2EB",
+              "#4BC0C0",
+              "#9966FF",
             ],
-            datasets: [{
-                label: 'Porcentaje (%)',
-                data: [
-                    51.89, 10.57, 3.90, 
-                    3.75, 2.23, 1.78, 
-                    1.33, 1.13, 1.05, 
-                    0.88, 0.87, 0.79, 
-                    0.72, 0.70, 0.67, 
-                    0.61, 0.52, 0.51, 
-                    0.49, 0.43, 0.39, 
-                    0.39, 0.38, 0.36, 
-                    0.34, 0.31, 0.31, 
-                    0.29, 0.29, 0.29, 
-                    0.29, 0.29, 0.28, 
-                    0.28, 0.28, 0.28, 
-                    0.25, 0.25, 0.23, 
-                    0.23, 0.21, 0.21, 
-                    0.20, 0.20, 0.20, 
-                    0.20, 0.20, 0.20, 
-                    0.20, 0.20, 0.20, 
-                    0.20, 0.20, 0.20, 
-                    0.20, 0.20, 0.20, 
-                    0.20, 0.20, 0.20, 
-                    0.20, 0.20, 0.20, 
-                    0.20, 0.20, 0.20, 
-                    0.20, 0.20, 0.20, 
-                    0.20, 0.20, 0.20, 
-                    0.20, 0.20, 0.20
-                ],
-                backgroundColor: ['#36A2EB', '#FF6384', '#FFCE56', '#4BC0C0', '#9966FF'],
-                borderColor: ['#36A2EB', '#FF6384', '#FFCE56', '#4BC0C0', '#9966FF'],
-                borderWidth: 1
-            }]
-        };
+            borderColor: [
+              "#FFCE56",
+              "#FF6384",
+              "#36A2EB",
+              "#4BC0C0",
+              "#9966FF",
+            ],
+            borderWidth: 1,
+          },
+        ],
+      };
 
-        const monedaData = {
-            labels: ['US Dollar', 'Euros', 'Dolar Canadiense', 'Peso Colombiano', 'Peso Chileno'],
-            datasets: [{
-                label: 'Frecuencia',
-                data: [4050, 70, 1, 1, 1], // Ejemplo de datos
-                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF'],
-                borderColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF'],
-                borderWidth: 1
-            }]
-        };
+      const estadoCivilData = {
+        labels: ["Solter@", "Casad@", "Viud@", "Divorciad@"],
+        datasets: [
+          {
+            label: "Porcentaje (%)",
+            data: [65.1, 31.58, 1.7, 1.62],
+            backgroundColor: ["#FF6384", "#36A2EB", "#FFCE56", "#4BC0C0"],
+            borderColor: ["#FF6384", "#36A2EB", "#FFCE56", "#4BC0C0"],
+            borderWidth: 1,
+          },
+        ],
+      };
 
-        const tipoOperacionData = {
-            labels: ['Compra', 'Venta'],
-            datasets: [{
-                label: 'Frecuencia',
-                data: [2653, 1470], // Ejemplo de datos
-                backgroundColor: ['#36A2EB', '#FF6384'],
-                borderColor: ['#36A2EB', '#FF6384'],
-                borderWidth: 1
-            }]
-        };
+      const ubicacionData = {
+        labels: [
+          "PIURA",
+          "CASTILLA",
+          "VEINTISEIS DE OCTUBRE",
+          "SULLANA",
+          "CATACAOS",
+          "PARIÑAS",
+          "SANTIAGO DE SURCO",
+          "PAITA",
+          "VICE",
+          "CHULUCANAS",
+          "TRUJILLO",
+          "CHICLAYO",
+          "LIMA",
+          "LAS LOMAS",
+          "CALLAO",
+          "TAMBO GRANDE",
+          "TUMBES",
+          "SUYO",
+          "LA MOLINA",
+          "AYABACA",
+          "CHORRILLOS",
+          "COLAN",
+          "LA UNION",
+          "VILLA EL SALVADOR",
+          "SAN VICENTE DE CAÑETE",
+          "EL ALTO",
+          "SAN MIGUEL",
+          "SAN MARTIN DE PORRES",
+          "SECHURA",
+          "LA ARENA",
+          "ETEN PUERTO",
+          "YURIMAGUAS",
+          "MIRAFLORES",
+          "BELLAVISTA",
+          "SANTA MARIA",
+          "LOS OLIVOS",
+          "SAN ISIDRO",
+          "SAN BORJA",
+          "SURQUILLO",
+          "COMAS",
+          "VENTANILLA",
+          "VILLA MARIA DEL TRIUNFO",
+          "LOS ORGANOS",
+          "PAIMAS",
+          "EL TALLAN",
+          "LA MATANZA",
+          "EL CARMEN DE LA FRONTERA",
+          "SANTO DOMINGO",
+          "SAN MIGUEL DE EL FAIQUE",
+          "LAMBAYEQUE",
+          "FRIAS",
+          "CALLERIA",
+          "TARAPOTO",
+          "LURIN",
+          "CARABAYLLO",
+          "BUENOS AIRES",
+          "SICCHEZ",
+          "BAGUA",
+          "ATE",
+          "LA BREA",
+          "AMOTAPE",
+          "MANCORA",
+          "JILILI",
+          "PARIÑAS",
+          "ANCON",
+          "SAN JUAN DE LURIGANCHO",
+          "INDEPENDENCIA",
+          "JOSE LEONARDO ORTIZ",
+          "SANTA ANITA",
+          "PUENTE PIEDRA",
+          "CUSCO",
+          "VICTOR LARCO HERRERA",
+          "SAN JUAN DE MIRAFLORES",
+          "LINCE",
+          "PUCALA",
+          "CURA MORI",
+          "CAJAMARCA",
+          "MARCAVELICA",
+          "RIMAC",
+          "CARMEN DE LA LEGUA REYNOSO",
+          "MORROPON",
+          "CHIMBOTE",
+          "NUEVO CHIMBOTE",
+          "MONTERO",
+          "MONSEFU",
+          "LA VICTORIA",
+          "BELLAVISTA DE LA UNION",
+          "MARIANO MELGAR",
+          "LURIGANCHO",
+          "LAGUNAS",
+          "SAN MARTÍN DE PORRES",
+          "LA ESPERANZA",
+          "HUARAL",
+          "RINCONADA LLICUAR",
+          "ETEN",
+          "CORIS",
+          "PIMENTEL",
+          "JESUS MARIA",
+          "LA UNIÓN",
+          "QUEROCOTILLO",
+          "SAN LUIS",
+          "FERREÑAFE",
+          "PACASMAYO",
+          "SUBTANJALLA",
+          "SANTA CATALINA DE MOSSA",
+          "QUERECOTILLO",
+          "SALITRAL",
+          "SANTA ANA",
+          "TAMARINDO",
+          "ZORRITOS",
+          "HUAURA",
+          "PAMPAS DE HOSPITAL",
+          "CANCHAQUE",
+          "HUAQUIRCA",
+          "CHAO",
+          "MIGUEL CHECA",
+          "PARCONA",
+          "CHACCHO",
+          "SANTA ROSA",
+          "HUANUCO",
+          "MAGDALENA DEL MAR",
+          "PALCAZU",
+        ],
+        datasets: [
+          {
+            label: "Porcentaje (%)",
+            data: [
+              51.89, 10.57, 3.9, 3.75, 2.23, 1.78, 1.33, 1.13, 1.05, 0.88, 0.87,
+              0.79, 0.72, 0.7, 0.67, 0.61, 0.52, 0.51, 0.49, 0.43, 0.39, 0.39,
+              0.38, 0.36, 0.34, 0.31, 0.31, 0.29, 0.29, 0.29, 0.29, 0.29, 0.28,
+              0.28, 0.28, 0.28, 0.25, 0.25, 0.23, 0.23, 0.21, 0.21, 0.2, 0.2,
+              0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2,
+              0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2,
+              0.2, 0.2, 0.2, 0.2, 0.2,
+            ],
+            backgroundColor: [
+              "#36A2EB",
+              "#FF6384",
+              "#FFCE56",
+              "#4BC0C0",
+              "#9966FF",
+            ],
+            borderColor: [
+              "#36A2EB",
+              "#FF6384",
+              "#FFCE56",
+              "#4BC0C0",
+              "#9966FF",
+            ],
+            borderWidth: 1,
+          },
+        ],
+      };
 
-        const origenData = {
-            labels: ['Remesa', 'Otros'],
-            datasets: [{
-                label: 'Porcentaje (%)',
-                data: [19.11, 80.89], // Ejemplo de datos
-                backgroundColor: ['#FFCE56', '#FF6384'],
-                borderColor: ['#FFCE56', '#FF6384'],
-                borderWidth: 1
-            }]
-        };
+      const monedaData = {
+        labels: [
+          "US Dollar",
+          "Euros",
+          "Dólar Canadiense",
+          "Peso Colombiano",
+          "Peso Chileno",
+        ],
+        datasets: [
+          {
+            label: "Porcentaje (%)",
+            data: [98.77, 1.63, 0.02, 0.02, 0.02],
+            backgroundColor: [
+              "#FF6384",
+              "#36A2EB",
+              "#FFCE56",
+              "#4BC0C0",
+              "#9966FF",
+            ],
+            borderColor: [
+              "#FF6384",
+              "#36A2EB",
+              "#FFCE56",
+              "#4BC0C0",
+              "#9966FF",
+            ],
+            borderWidth: 1,
+          },
+        ],
+      };
 
-        function createChart(ctx, data) {
-            return new Chart(ctx, {
-                type: 'pie',
-                data: data,
-                options: {
-                    responsive: true,
-                    plugins: {
-                        legend: {
-                            display: true,
-                            position: 'top',
-                        },
-                        title: {
-                            display: true,
-                            text: 'Porcentaje (%)'
-                        }
-                    }
-                }
-            });
-        }
+      const tipoOperacionData = {
+        labels: ["Compra", "Venta"],
+        datasets: [
+          {
+            label: "Porcentaje (%)",
+            data: [64.38, 35.62],
+            backgroundColor: ["#36A2EB", "#FF6384"],
+            borderColor: ["#36A2EB", "#FF6384"],
+            borderWidth: 1,
+          },
+        ],
+      };
 
-        createChart(document.getElementById('sexoChart'), sexoData);
-        createChart(document.getElementById('edadChart'), edadData);
-        createChart(document.getElementById('estadoCivilChart'), estadoCivilData);
-        createChart(document.getElementById('ubicacionChart'), ubicacionData);
-        createChart(document.getElementById('monedaChart'), monedaData);
-        createChart(document.getElementById('tipoOperacionChart'), tipoOperacionData);
-        createChart(document.getElementById('origenChart'), origenData);
+      const origenData = {
+        labels: ["Remesa", "Otros"],
+        datasets: [
+          {
+            label: "Porcentaje (%)",
+            data: [19.11, 80.89], // Ejemplo de datos
+            backgroundColor: ["#FFCE56", "#FF6384"],
+            borderColor: ["#FFCE56", "#FF6384"],
+            borderWidth: 1,
+          },
+        ],
+      };
+
+      function createChart(ctx, data) {
+        return new Chart(ctx, {
+          type: "pie",
+          data: data,
+          options: {
+            responsive: true,
+            plugins: {
+              legend: {
+                display: true,
+                position: "top",
+              },
+              title: {
+                display: true,
+                text: "Porcentaje (%)",
+              },
+            },
+          },
+        });
+      }
+
+      createChart(document.getElementById("sexoChart"), sexoData);
+      createChart(document.getElementById("edadChart"), edadData);
+      createChart(document.getElementById("estadoCivilChart"), estadoCivilData);
+      createChart(document.getElementById("ubicacionChart"), ubicacionData);
+      createChart(document.getElementById("monedaChart"), monedaData);
+      createChart(
+        document.getElementById("tipoOperacionChart"),
+        tipoOperacionData
+      );
+      createChart(document.getElementById("origenChart"), origenData);
     </script>
-</body>
+  </body>
 </html>

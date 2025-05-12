@@ -1,257 +1,386 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>EL QUINDE</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-        .chart-container {
-            position: relative;
-            width: 80%;
-            margin: auto;
-            max-width: 600px; /* Ajusta el ancho máximo del contenedor */
-            background-color: white; /* Fondo blanco para el contenedor */
-            padding: 20px; /* Espaciado interno */
-            border-radius: 8px; /* Bordes redondeados */
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra para el contenedor */
-        }
-        canvas {
-            max-width: 100%;
-            height: auto;
-        }
-        h1 {
-            text-align: center;
-        }
-        h2 {
-            text-align: center;
-            font-size: 24px; /* Tamaño de fuente para el subtítulo y etiquetas */
-        }
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        padding: 0;
+        background-color: #f4f4f4;
+      }
+      .chart-container {
+        position: relative;
+        width: 80%;
+        margin: auto;
+        max-width: 600px; /* Ajusta el ancho máximo del contenedor */
+        background-color: white; /* Fondo blanco para el contenedor */
+        padding: 20px; /* Espaciado interno */
+        border-radius: 8px; /* Bordes redondeados */
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra para el contenedor */
+      }
+      canvas {
+        max-width: 100%;
+        height: auto;
+      }
+      h1 {
+        text-align: center;
+      }
+      h2 {
+        text-align: center;
+        font-size: 24px; /* Tamaño de fuente para el subtítulo y etiquetas */
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <h1>EL QUINDE</h1>
     <h2>Cantidad de muestra: 9945</h2>
-    
+
     <div class="chart-container">
-        <h2>Sexo</h2>
-        <canvas id="sexoChart"></canvas>
+      <h2>Sexo</h2>
+      <canvas id="sexoChart"></canvas>
     </div>
-    
+
     <div class="chart-container">
-        <h2>Rango de Edad</h2>
-        <canvas id="edadChart"></canvas>
+      <h2>Rango de Edad</h2>
+      <canvas id="edadChart"></canvas>
     </div>
-    
+
     <div class="chart-container">
-        <h2>Estado Civil</h2>
-        <canvas id="estadoCivilChart"></canvas>
+      <h2>Estado Civil</h2>
+      <canvas id="estadoCivilChart"></canvas>
     </div>
-    
+
     <div class="chart-container">
-        <h2>Ubicación</h2>
-        <canvas id="ubicacionChart"></canvas>
+      <h2>Ubicación</h2>
+      <canvas id="ubicacionChart"></canvas>
     </div>
-    
+
     <div class="chart-container">
-        <h2>Moneda</h2>
-        <canvas id="monedaChart"></canvas>
+      <h2>Moneda</h2>
+      <canvas id="monedaChart"></canvas>
     </div>
-    
+
     <div class="chart-container">
-        <h2>Tipo de Operación</h2>
-        <canvas id="tipoOperacionChart"></canvas>
+      <h2>Tipo de Operación</h2>
+      <canvas id="tipoOperacionChart"></canvas>
     </div>
-    
+
     <div class="chart-container">
-        <h2>Origen</h2>
-        <canvas id="origenChart"></canvas>
+      <h2>Origen</h2>
+      <canvas id="origenChart"></canvas>
     </div>
 
     <script>
-        const sexoData = {
-            labels: ['Femenino', 'Masculino'],
-            datasets: [{
-                label: 'Porcentaje (%)',
-                data: [51.10, 48.90],
-                backgroundColor: ['#36A2EB', '#FF6384'],
-                borderColor: ['#36A2EB', '#FF6384'],
-                borderWidth: 1
-            }]
-        };
+      const sexoData = {
+        labels: ["Femenino", "Masculino"],
+        datasets: [
+          {
+            label: "Porcentaje (%)",
+            data: [51.1, 48.9],
+            backgroundColor: ["#36A2EB", "#FF6384"],
+            borderColor: ["#36A2EB", "#FF6384"],
+            borderWidth: 1,
+          },
+        ],
+      };
 
-        const edadData = {
-            labels: ['18-25', '26-35', '36-45', '46-55', '56 a más'],
-            datasets: [{
-                label: 'Porcentaje (%)',
-                data: [2.02, 16.54, 22.70, 24.24, 34.51],
-                backgroundColor: ['#FFCE56', '#FF6384', '#36A2EB', '#4BC0C0', '#9966FF'],
-                borderColor: ['#FFCE56', '#FF6384', '#36A2EB', '#4BC0C0', '#9966FF'],
-                borderWidth: 1
-            }]
-        };
-
-        const estadoCivilData = {
-            labels: ['Solter@', 'Casad@', 'Viud@', 'Divorciad@'],
-            datasets: [{
-                label: 'Porcentaje (%)',
-                data: [64.16, 31.55, 3.39, 0.90],
-                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0'],
-                borderColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0'],
-                borderWidth: 1
-            }]
-        };
-
-        const ubicacionData = {
-            labels: [
-                'ICA', 'SUBTANJALLA', 'PARCONA', 'LA TINGUIÑA', 'SANTIAGO', 
-                'SANTIAGO DE SURCO', 'PALPA', 'NAZCA', 'SALAS', 'LA VICTORIA', 
-                'SAN JUAN DE LURIGANCHO', 'SAN BORJA', 'MIRAFLORES', 'MARCONA', 
-                'SAN MIGUEL', 'SAN JUAN DE MIRAFLORES', 'JOSE LUIS BUSTAMANTE Y RIVERO', 
-                'PUEBLO NUEVO', 'LINCE', 'LURIN', 'VISTA ALEGRE', 'PISCO', 
-                'CALLAO', 'PUQUIO', 'LA MOLINA', 'SANTA CRUZ', 'CHINCHA ALTA', 
-                'SAN ISIDRO', 'LOS AQUIJES', 'LA TINGUIÑA', 'TATE', 
-                'SAN JUAN BAUTISTA', '0', 'LIMA', 'OCUCAJE', 'CHORRILLOS', 
-                'ATE', 'CORDOVA', 'SAN MARTIN DE PORRES', 'VICTOR LARCO HERRERA', 
-                'VILLA EL SALVADOR', 'SURQUILLO', 'CIENEGUILLA', 'PUEBLO LIBRE', 
-                'PACHACUTEC', 'JESUS MARIA', 'OCOYO', 'COMAS', 'RIMAC', 
-                'EL INGENIO', 'CAMANA', 'LOS OLIVOS', 'VILLA MARIA DEL TRIUNFO', 
-                'AYACUCHO', 'HUANCANO', 'CERRO COLORADO', 'CARMEN DE LA LEGUA REYNOSO', 
-                'CHANGUILLO', 'SAN JOSE DE LOS MOLINOS', 'BELLAVISTA', 'TACNA', 
-                'TRUJILLO', 'MAGDALENA DEL MAR', 'ATIQUIPA', 'CHALA', 
-                'TUPAC AMARU INCA', 'VENTANILLA', 'SAN MARTÍN DE PORRES', 
-                'HUANCAYO', 'CARABAYLLO', 'PARACAS', 'SAN CLEMENTE', 
-                'BREÑA', 'YAUCA DEL ROSARIO 1/', 'CAJAMARCA', 'ACARI', 
-                'LA PERLA', 'PARIÑAS', 'SANTA ANA', 'SANTA RITA DE SIGUAS', 
-                'SAN LUIS', 'HUANCAVELICA', 'CHICLAYO', 'QUILMANA', 
-                'NASCA', 'CALANGO', 'HUAC-HUAS', 'LARAMARCA', 'PIURA', 
-                'MOQUEGUA', 'SAN ANDRES', 'INDEPENDENCIA', 'YAUCA', 
-                'CUSCO', 'LA ESPERANZA', 'YAUCA DEL ROSARIO', 'IQUITOS', 
-                'LLAUTA', 'JESÚS MARÍA', 'PUENTE PIEDRA', 'SAN NICOLAS', 
-                'HUACHO', 'EL AGUSTINO', 'WANCHAQ', 'ALTO SELVA ALEGRE', 
-                'SANTA ANITA', 'SOCABAYA', 'URUBAMBA', 'CORACORA', 
-                'PUCUSANA', 'HUAURA', 'PUNO', 'CALLERIA', 'QUERCO', 
-                'MADEAN', 'PACHACAMAC', 'SANTIAGO DE CAO', 'CHACLACAYO', 
-                'OBAS', 'MARIANO MELGAR', 'POCOLLAY', 'EL TAMBO', 
-                'ZARUMILLA', 'AREQUIPA', 'BARRANCO', 'YAUCA DEL ROSARIO 1/', 
-                'BREÑÁ', 'ORCOTUNA', 'CHARACATO', 'PAUCARPATA', 
-                'HUMAY', 'YURA', 'RUPA-RUPA', 'CALETA DE CARQUIN', 
-                'TIABAYA', 'PUNCHANA', 'RIO GRANDE', 'CARAVELI', 
-                'ABANCAY', 'LURIGANCHO', 'DANIEL HERNANDEZ', 'SAN JERONIMO DE TUNAN'
+      const edadData = {
+        labels: ["18-25", "26-35", "36-45", "46-55", "56 a más"],
+        datasets: [
+          {
+            label: "Porcentaje (%)",
+            data: [2.02, 16.54, 22.7, 24.24, 34.51],
+            backgroundColor: [
+              "#FFCE56",
+              "#FF6384",
+              "#36A2EB",
+              "#4BC0C0",
+              "#9966FF",
             ],
-            datasets: [{
-                label: 'Porcentaje (%)',
-                data: [
-                    57.17, 5.28, 4.05, 2.81, 1.98, 
-                    1.72, 1.58, 1.50, 1.50, 1.19, 
-                    0.92, 0.75, 0.75, 0.70, 0.70, 
-                    0.64, 0.57, 0.55, 0.55, 0.53, 
-                    0.53, 0.51, 0.40, 0.37, 0.37, 
-                    0.37, 0.35, 0.33, 0.33, 0.33, 
-                    0.33, 0.33, 0.31, 0.31, 0.31, 
-                    0.31, 0.31, 0.31, 0.30, 0.30, 
-                    0.30, 0.29, 0.29, 0.29, 0.29, 
-                    0.29, 0.29, 0.29, 0.29, 0.29, 
-                    0.29, 0.29, 0.29, 0.29, 0.29, 
-                    0.29, 0.29, 0.29, 0.29, 0.29, 
-                    0.29, 0.29, 0.29, 0.29, 0.29, 
-                    0.29, 0.29, 0.29, 0.29, 0.29, 
-                    0.29, 0.29, 0.29, 0.29, 0.29, 
-                    0.29, 0.29, 0.29, 0.29, 0.29, 
-                    0.29, 0.29, 0.29, 0.29, 0.29, 
-                    0.29, 0.29, 0.29, 0.29, 0.29, 
-                    0.29, 0.29, 0.29, 0.29, 0.29, 
-                    0.29, 0.29, 0.29, 0.29, 0.29, 
-                    0.29, 0.29, 0.29, 0.29, 0.29, 
-                    0.29, 0.29, 0.29, 0.29, 0.29, 
-                    0.29, 0.29, 0.29, 0.29, 0.29, 
-                    0.29, 0.29, 0.29, 0.29, 0.29, 
-                    0.29, 0.29, 0.29, 0.29, 0.29, 
-                    0.29, 0.29, 0.29, 0.29, 0.29, 
-                    0.29, 0.29, 0.29, 0.29, 0.29, 
-                    0.29, 0.29, 0.29, 0.29, 0.29, 
-                    0.29, 0.29, 0.29, 0.29, 0.29, 
-                    0.29, 0.29, 0.29, 0.29, 0.29, 
-                    0.29, 0.29, 0.29, 0.29, 0.29, 
-                    0.29, 0.29, 0.29, 0.29, 0.29, 
-                    0.29, 0.29, 0.29, 0.29, 0.29, 
-                    0.29, 0.29, 0.29, 0.29, 0.29, 
-                    0.29, 0.29, 0.29, 0.29, 0.29, 
-                    0.29, 0.29, 0.29, 0.29, 0.29, 
-                    0.29, 0.29, 0.29, 0.29, 0.29
-                ],
-                backgroundColor: ['#36A2EB', '#FF6384', '#FFCE56', '#4BC0C0', '#9966FF'],
-                borderColor: ['#36A2EB', '#FF6384', '#FFCE56', '#4BC0C0', '#9966FF'],
-                borderWidth: 1
-            }]
-        };
+            borderColor: [
+              "#FFCE56",
+              "#FF6384",
+              "#36A2EB",
+              "#4BC0C0",
+              "#9966FF",
+            ],
+            borderWidth: 1,
+          },
+        ],
+      };
 
-        const monedaData = {
-            labels: ['US Dollar', 'Euros', 'Peso Chileno'],
-            datasets: [{
-                label: 'Frecuencia',
-                data: [9652, 292, 1],
-                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'],
-                borderColor: ['#FF6384', '#36A2EB', '#FFCE56'],
-                borderWidth: 1
-            }]
-        };
+      const estadoCivilData = {
+        labels: ["Solter@", "Casad@", "Viud@", "Divorciad@"],
+        datasets: [
+          {
+            label: "Porcentaje (%)",
+            data: [64.16, 31.55, 3.39, 0.9],
+            backgroundColor: ["#FF6384", "#36A2EB", "#FFCE56", "#4BC0C0"],
+            borderColor: ["#FF6384", "#36A2EB", "#FFCE56", "#4BC0C0"],
+            borderWidth: 1,
+          },
+        ],
+      };
 
-        const tipoOperacionData = {
-            labels: ['Compra', 'Venta'],
-            datasets: [{
-                label: 'Frecuencia',
-                data: [5598, 4347],
-                backgroundColor: ['#36A2EB', '#FF6384'],
-                borderColor: ['#36A2EB', '#FF6384'],
-                borderWidth: 1
-            }]
-        };
+      const ubicacionData = {
+        labels: [
+          "ICA",
+          "SUBTANJALLA",
+          "PARCONA",
+          "LA TINGUIÑA",
+          "SANTIAGO",
+          "SANTIAGO DE SURCO",
+          "PALPA",
+          "NAZCA",
+          "SALAS",
+          "LA VICTORIA",
+          "SAN JUAN DE LURIGANCHO",
+          "SAN BORJA",
+          "MIRAFLORES",
+          "MARCONA",
+          "SAN MIGUEL",
+          "SAN JUAN DE MIRAFLORES",
+          "JOSE LUIS BUSTAMANTE Y RIVERO",
+          "PUEBLO NUEVO",
+          "LINCE",
+          "LURIN",
+          "VISTA ALEGRE",
+          "PISCO",
+          "CALLAO",
+          "PUQUIO",
+          "LA MOLINA",
+          "SANTA CRUZ",
+          "CHINCHA ALTA",
+          "SAN ISIDRO",
+          "LOS AQUIJES",
+          "LA TINGUIÑA",
+          "TATE",
+          "SAN JUAN BAUTISTA",
+          "0",
+          "LIMA",
+          "OCUCAJE",
+          "CHORRILLOS",
+          "ATE",
+          "CORDOVA",
+          "SAN MARTIN DE PORRES",
+          "VICTOR LARCO HERRERA",
+          "VILLA EL SALVADOR",
+          "SURQUILLO",
+          "CIENEGUILLA",
+          "PUEBLO LIBRE",
+          "PACHACUTEC",
+          "JESUS MARIA",
+          "OCOYO",
+          "COMAS",
+          "RIMAC",
+          "EL INGENIO",
+          "CAMANA",
+          "LOS OLIVOS",
+          "VILLA MARIA DEL TRIUNFO",
+          "AYACUCHO",
+          "HUANCANO",
+          "CERRO COLORADO",
+          "CARMEN DE LA LEGUA REYNOSO",
+          "CHANGUILLO",
+          "SAN JOSE DE LOS MOLINOS",
+          "BELLAVISTA",
+          "TACNA",
+          "TRUJILLO",
+          "MAGDALENA DEL MAR",
+          "ATIQUIPA",
+          "CHALA",
+          "TUPAC AMARU INCA",
+          "VENTANILLA",
+          "SAN MARTÍN DE PORRES",
+          "HUANCAYO",
+          "CARABAYLLO",
+          "PARACAS",
+          "SAN CLEMENTE",
+          "BREÑA",
+          "YAUCA DEL ROSARIO 1/",
+          "CAJAMARCA",
+          "ACARI",
+          "LA PERLA",
+          "PARIÑAS",
+          "SANTA ANA",
+          "SANTA RITA DE SIGUAS",
+          "SAN LUIS",
+          "HUANCAVELICA",
+          "CHICLAYO",
+          "QUILMANA",
+          "NASCA",
+          "CALANGO",
+          "HUAC-HUAS",
+          "LARAMARCA",
+          "PIURA",
+          "MOQUEGUA",
+          "SAN ANDRES",
+          "INDEPENDENCIA",
+          "YAUCA",
+          "CUSCO",
+          "LA ESPERANZA",
+          "YAUCA DEL ROSARIO",
+          "IQUITOS",
+          "LLAUTA",
+          "JESÚS MARÍA",
+          "PUENTE PIEDRA",
+          "SAN NICOLAS",
+          "HUACHO",
+          "EL AGUSTINO",
+          "WANCHAQ",
+          "ALTO SELVA ALEGRE",
+          "SANTA ANITA",
+          "SOCABAYA",
+          "URUBAMBA",
+          "CORACORA",
+          "PUCUSANA",
+          "HUAURA",
+          "PUNO",
+          "CALLERIA",
+          "QUERCO",
+          "MADEAN",
+          "PACHACAMAC",
+          "SANTIAGO DE CAO",
+          "CHACLACAYO",
+          "OBAS",
+          "MARIANO MELGAR",
+          "POCOLLAY",
+          "EL TAMBO",
+          "ZARUMILLA",
+          "AREQUIPA",
+          "BARRANCO",
+          "YAUCA DEL ROSARIO 1/",
+          "BREÑÁ",
+          "ORCOTUNA",
+          "CHARACATO",
+          "PAUCARPATA",
+          "HUMAY",
+          "YURA",
+          "RUPA-RUPA",
+          "CALETA DE CARQUIN",
+          "TIABAYA",
+          "PUNCHANA",
+          "RIO GRANDE",
+          "CARAVELI",
+          "ABANCAY",
+          "LURIGANCHO",
+          "DANIEL HERNANDEZ",
+          "SAN JERONIMO DE TUNAN",
+        ],
+        datasets: [
+          {
+            label: "Porcentaje (%)",
+            data: [
+              57.17, 5.28, 4.05, 2.81, 1.98, 1.72, 1.58, 1.5, 1.5, 1.19, 0.92,
+              0.75, 0.75, 0.7, 0.7, 0.64, 0.57, 0.55, 0.55, 0.53, 0.53, 0.51,
+              0.4, 0.37, 0.37, 0.37, 0.35, 0.33, 0.33, 0.33, 0.33, 0.33, 0.31,
+              0.31, 0.31, 0.31, 0.31, 0.31, 0.3, 0.3, 0.3, 0.29, 0.29, 0.29,
+              0.29, 0.29, 0.29, 0.29, 0.29, 0.29, 0.29, 0.29, 0.29, 0.29, 0.29,
+              0.29, 0.29, 0.29, 0.29, 0.29, 0.29, 0.29, 0.29, 0.29, 0.29, 0.29,
+              0.29, 0.29, 0.29, 0.29, 0.29, 0.29, 0.29, 0.29, 0.29, 0.29, 0.29,
+              0.29, 0.29, 0.29, 0.29, 0.29, 0.29, 0.29, 0.29, 0.29, 0.29, 0.29,
+              0.29, 0.29, 0.29, 0.29, 0.29, 0.29, 0.29, 0.29, 0.29, 0.29, 0.29,
+              0.29, 0.29, 0.29, 0.29, 0.29, 0.29, 0.29, 0.29, 0.29, 0.29, 0.29,
+              0.29, 0.29, 0.29, 0.29, 0.29, 0.29, 0.29, 0.29, 0.29, 0.29, 0.29,
+              0.29, 0.29, 0.29, 0.29, 0.29, 0.29, 0.29, 0.29, 0.29, 0.29, 0.29,
+              0.29, 0.29, 0.29, 0.29, 0.29, 0.29, 0.29, 0.29, 0.29, 0.29, 0.29,
+              0.29, 0.29, 0.29, 0.29, 0.29, 0.29, 0.29, 0.29, 0.29, 0.29, 0.29,
+              0.29, 0.29, 0.29, 0.29, 0.29, 0.29, 0.29, 0.29, 0.29, 0.29, 0.29,
+              0.29, 0.29, 0.29, 0.29, 0.29, 0.29, 0.29, 0.29, 0.29, 0.29, 0.29,
+              0.29, 0.29, 0.29, 0.29, 0.29, 0.29, 0.29, 0.29, 0.29,
+            ],
+            backgroundColor: [
+              "#36A2EB",
+              "#FF6384",
+              "#FFCE56",
+              "#4BC0C0",
+              "#9966FF",
+            ],
+            borderColor: [
+              "#36A2EB",
+              "#FF6384",
+              "#FFCE56",
+              "#4BC0C0",
+              "#9966FF",
+            ],
+            borderWidth: 1,
+          },
+        ],
+      };
 
-        const origenData = {
-            labels: ['Remesa', 'Otros'],
-            datasets: [{
-                label: 'Porcentaje (%)',
-                data: [41.62, 58.38],
-                backgroundColor: ['#FFCE56', '#FF6384'],
-                borderColor: ['#FFCE56', '#FF6384'],
-                borderWidth: 1
-            }]
-        };
+      const monedaData = {
+        labels: ["US Dollar", "Euros", "Peso Chileno"],
+        datasets: [
+          {
+            label: "Porcentaje (%)",
+            data: [97.17, 2.94, 0.01],
+            backgroundColor: ["#FF6384", "#36A2EB", "#FFCE56"],
+            borderColor: ["#FF6384", "#36A2EB", "#FFCE56"],
+            borderWidth: 1,
+          },
+        ],
+      };
 
-        function createChart(ctx, data) {
-            return new Chart(ctx, {
-                type: 'pie',
-                data: data,
-                options: {
-                    responsive: true,
-                    plugins: {
-                        legend: {
-                            display: true,
-                            position: 'top',
-                        },
-                        title: {
-                            display: true,
-                            text: 'Porcentaje (%)'
-                        }
-                    }
-                }
-            });
-        }
+      const tipoOperacionData = {
+        labels: ["Compra", "Venta"],
+        datasets: [
+          {
+            label: "Porcentaje (%)",
+            data: [56.32, 43.68],
+            backgroundColor: ["#36A2EB", "#FF6384"],
+            borderColor: ["#36A2EB", "#FF6384"],
+            borderWidth: 1,
+          },
+        ],
+      };
 
-        createChart(document.getElementById('sexoChart'), sexoData);
-        createChart(document.getElementById('edadChart'), edadData);
-        createChart(document.getElementById('estadoCivilChart'), estadoCivilData);
-        createChart(document.getElementById('ubicacionChart'), ubicacionData);
-        createChart(document.getElementById('monedaChart'), monedaData);
-        createChart(document.getElementById('tipoOperacionChart'), tipoOperacionData);
-        createChart(document.getElementById('origenChart'), origenData);
+      const origenData = {
+        labels: ["Remesa", "Otros"],
+        datasets: [
+          {
+            label: "Porcentaje (%)",
+            data: [41.62, 58.38],
+            backgroundColor: ["#FFCE56", "#FF6384"],
+            borderColor: ["#FFCE56", "#FF6384"],
+            borderWidth: 1,
+          },
+        ],
+      };
+
+      function createChart(ctx, data) {
+        return new Chart(ctx, {
+          type: "pie",
+          data: data,
+          options: {
+            responsive: true,
+            plugins: {
+              legend: {
+                display: true,
+                position: "top",
+              },
+              title: {
+                display: true,
+                text: "Porcentaje (%)",
+              },
+            },
+          },
+        });
+      }
+
+      createChart(document.getElementById("sexoChart"), sexoData);
+      createChart(document.getElementById("edadChart"), edadData);
+      createChart(document.getElementById("estadoCivilChart"), estadoCivilData);
+      createChart(document.getElementById("ubicacionChart"), ubicacionData);
+      createChart(document.getElementById("monedaChart"), monedaData);
+      createChart(
+        document.getElementById("tipoOperacionChart"),
+        tipoOperacionData
+      );
+      createChart(document.getElementById("origenChart"), origenData);
     </script>
-</body>
+  </body>
 </html>
