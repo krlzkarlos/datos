@@ -80,17 +80,6 @@
         border-color: #533093;
       }
 
-      .btn-descarga {
-        background-color: #17a2b8; /* Color de fondo */
-        border-color: #17a2b8; /* Color del borde */
-        color: #fff; /* Color del texto */
-      }
-
-      .btn-descarga:hover {
-        background-color: #138496; /* Color de fondo al pasar el mouse */
-        border-color: #117a8b; /* Color del borde al pasar el mouse */
-      }
-
       .title-container {
         background-color: #26d07c;
         color: white;
@@ -149,12 +138,6 @@
               onclick="showYearOptions('2024')"
               >2024</a
             >
-            <a
-              href="#"
-              class="btn btn-descarga btn-custom"
-              onclick="showYearOptions('descarga')"
-              >Descarga De Datos
-            </a>
           </div>
           <div class="mt-4">
             <a
@@ -375,15 +358,6 @@
 <a href="2024/TUMBES.html" class="btn btn-2024 btn-custom">TUMBES</a>
 `;
         }
-
-        //
-        else if (year === "descarga") {
-          modalBody.innerHTML = `<a href="descarga/resultados_2020.rar" class="btn btn-descarga btn-custom" download>2020</a>
-          <a href="descarga/resultados_2021.rar" class="btn btn-descarga btn-custom" download>2021</a>
-`;
-        }
-
-        //
 
         // Mostrar el modal
         modal.show();
