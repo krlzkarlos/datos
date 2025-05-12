@@ -117,7 +117,7 @@
 
       <div class="row mb-4">
         <div class="col-md-12">
-          <h3>Selecciona el año:</h3>
+          <h3>Graficos 📉</h3>
           <div class="btn-group d-flex flex-column">
             <a
               href="#"
@@ -149,18 +149,30 @@
               onclick="showYearOptions('2024')"
               >2024</a
             >
-            <a
-              href="#"
-              class="btn btn-descarga btn-custom"
-              onclick="showYearOptions('descarga')"
-              >Descarga De Datos
-            </a>
+       
+
+
           </div>
+
+<!--  -->
+<div class="mt-4">
+  <h3>Descarga de Datos 🏁</h3>
+  <a
+  href="#"
+  class="btn btn-descarga btn-custom"
+  onclick="showYearOptions('descarga')"
+  >Descarga De Datos
+</a>
+  
+</div>
+</div>
+<!--  -->
           <div class="mt-4">
+            <h3>Informes 📖 </h3>
             <a
               href="informe/InformeEstadistico.html"
               class="btn btn-primary btn-custom"
-              >Informe Estadístico</a
+              >Informe Calculo Estadístico</a
             >
           </div>
         </div>
@@ -380,6 +392,10 @@
         else if (year === "descarga") {
           modalBody.innerHTML = `<a href="descarga/resultados_2020.rar" class="btn btn-descarga btn-custom" download>2020</a>
           <a href="descarga/resultados_2021.rar" class="btn btn-descarga btn-custom" download>2021</a>
+          <a href="descarga/resultados_2022.rar" class="btn btn-descarga btn-custom" download>2022</a>
+          <a href="descarga/resultados_2023.rar" class="btn btn-descarga btn-custom" download>2023</a>
+          <a href="descarga/resultados_2024.rar" class="btn btn-descarga btn-custom" download>2024</a>
+
 `;
         }
 
