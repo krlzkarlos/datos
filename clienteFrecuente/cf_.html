@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Cliente Frecuente</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+      .chart-container {
+        width: 80%;
+        height: 400px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: white;
+      }
+      h2 {
+        text-align: center;
+        color: #333;
+        font-family: Arial, sans-serif;
+        margin: 10px 0 5px 0;
+      }
+      .stats {
+        text-align: center;
+        color: #666;
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+        margin: 0 0 15px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="chart-container">
+      <h2>Inscritos vs Aceptación CF 🗃️</h2>
+      <hr />
+      <hr />
+      <div class="stats">
+        Total de inscritos: 910 | Aceptaron términos: 160 | Porcentaje de
+        aceptación: 17.58%
+      </div>
+      <canvas id="termsChart"></canvas>
+    </div>
+
+    <script>
+      const ctx = document.getElementById("termsChart").getContext("2d");
+      const data = {
+        labels: ["No aceptaron T&C", "Aceptaron T&C"],
+        datasets: [
+          {
+            data: [750, 160],
+            backgroundColor: ["#FF6384", "#36A2EB"],
+            borderWidth: 0,
+          },
+        ],
+      };
+
+      new Chart(ctx, {
+        type: "pie",
+        data: data,
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: "bottom",
+              labels: {
+                font: {
+                  size: 14,
+                },
+              },
+            },
+            tooltip: {
+              callbacks: {
+                label: function (context) {
+                  const value = context.raw;
+                  const total = context.dataset.data.reduce((a, b) => a + b);
+                  const percentage = ((value / total) * 100).toFixed(1);
+                  return `${value} usuarios (${percentage}%)`;
+                },
+              },
+            },
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

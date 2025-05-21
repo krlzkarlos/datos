@@ -2,53 +2,97 @@
 <html>
   <head>
     <title>Cliente Frecuente</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
-      .chart-container {
-        width: 80%;
-        height: 400px;
-        margin: 20px auto;
+      body {
+        margin: 0;
         padding: 20px;
-        background-color: white;
+        font-family: Arial, sans-serif;
+        background: #f5f5f5;
+        min-height: 100vh;
       }
+      
+      .chart-container {
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        width: 90%;
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
       h2 {
         text-align: center;
+        font-size: 24px;
+        margin: 0 0 15px 0;
         color: #333;
-        font-family: Arial, sans-serif;
-        margin: 10px 0 5px 0;
       }
+
       .stats {
         text-align: center;
+        font-size: 16px;
+        margin: 15px 0;
         color: #666;
-        font-family: Arial, sans-serif;
-        font-size: 14px;
-        margin: 0 0 15px 0;
+      }
+
+      .chart-wrapper {
+        aspect-ratio: 1;
+        max-width: 400px;
+        margin: 0 auto;
+        position: relative;
+      }
+
+      @media (max-width: 768px) {
+        body {
+          padding: 10px;
+        }
+
+        .chart-container {
+          padding: 15px;
+          width: 95%;
+        }
+
+        h2 {
+          font-size: 20px;
+        }
+
+        .stats {
+          font-size: 14px;
+          display: flex;
+          flex-direction: column;
+          gap: 5px;
+        }
+
+        .chart-wrapper {
+          max-width: 300px;
+        }
       }
     </style>
   </head>
   <body>
     <div class="chart-container">
-      <h2>Inscritos vs Aceptación CF 🗃️</h2>
-      <hr />
-      <hr />
+      <h2>Inscritos vs Aceptación CF 📃</h2>
       <div class="stats">
-        Total de inscritos: 910 | Aceptaron términos: 160 | Porcentaje de
-        aceptación: 17.58%
+        <div>Total de inscritos: 910</div>
+        <div>Aceptaron términos: 160</div>
+        <div>Porcentaje de aceptación: 17.58%</div>
       </div>
-      <canvas id="termsChart"></canvas>
+      <div class="chart-wrapper">
+        <canvas id="termsChart"></canvas>
+      </div>
     </div>
 
     <script>
-      const ctx = document.getElementById("termsChart").getContext("2d");
+      const ctx = document.getElementById("termsChart");
       const data = {
         labels: ["No aceptaron T&C", "Aceptaron T&C"],
-        datasets: [
-          {
-            data: [750, 160],
-            backgroundColor: ["#FF6384", "#36A2EB"],
-            borderWidth: 0,
-          },
-        ],
+        datasets: [{
+          data: [750, 160],
+          backgroundColor: ["#FF6384", "#36A2EB"],
+          borderWidth: 0,
+        }]
       };
 
       new Chart(ctx, {
@@ -56,28 +100,30 @@
         data: data,
         options: {
           responsive: true,
-          maintainAspectRatio: false,
+          maintainAspectRatio: true,
           plugins: {
             legend: {
               position: "bottom",
               labels: {
+                boxWidth: 12,
+                padding: 15,
                 font: {
-                  size: 14,
-                },
-              },
+                  size: 13
+                }
+              }
             },
             tooltip: {
               callbacks: {
-                label: function (context) {
+                label: function(context) {
                   const value = context.raw;
                   const total = context.dataset.data.reduce((a, b) => a + b);
                   const percentage = ((value / total) * 100).toFixed(1);
                   return `${value} usuarios (${percentage}%)`;
-                },
-              },
-            },
-          },
-        },
+                }
+              }
+            }
+          }
+        }
       });
     </script>
   </body>
