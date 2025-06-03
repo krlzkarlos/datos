@@ -75,9 +75,9 @@
     <div class="chart-container">
       <h2>Inscritos vs Aceptación CF 📃</h2>
       <div class="stats">
-        <div>Total de inscritos: 1030</div>
-        <div>Aceptaron términos: 200</div>
-        <div>Porcentaje de aceptación: 19.42%</div>
+        <div>Total de inscritos: 1241</div>
+        <div>Aceptaron términos: 253</div>
+        <div>Porcentaje de aceptación: 20.39%</div>
       </div>
       <div class="chart-wrapper">
         <canvas id="termsChart"></canvas>
@@ -85,12 +85,16 @@
     </div>
 
     <script>
+      var totalUsers = 1241;
+      var accpetedTerms = 253;
+      var notAcceptedTerms = totalUsers - accpetedTerms;
+
       const ctx = document.getElementById("termsChart");
       const data = {
         labels: ["No aceptaron T&C", "Aceptaron T&C"],
         datasets: [
           {
-            data: [830, 200], // Actualiza los datos aquí
+            data: [notAcceptedTerms, accpetedTerms], // Actualiza los datos aquí
             backgroundColor: ["#FF6384", "#36A2EB"],
             borderWidth: 0,
           },
