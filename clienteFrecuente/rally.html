@@ -39,9 +39,7 @@
 
       .chart-wrapper {
         position: relative;
-        height: 80vh;
-        max-height: 800px;
-        min-height: 400px;
+
         width: 100%;
       }
 
@@ -63,19 +61,14 @@
           font-size: 14px;
           margin-bottom: 15px;
         }
-
-        .chart-wrapper {
-          height: calc(100vh - 120px);
-          min-height: 500px;
-        }
       }
     </style>
   </head>
   <body>
     <div class="chart-container">
       <h2>Rally PeruMoney 🚀🏁</h2>
-      <div class="total-registros">Total de registros: 191</div>
-      <h6>update 09/06/2025 00:00</h6>
+      <div class="total-registros">Total de registros: 306</div>
+      <h6>update 11/06/2025 00:00</h6>
       <div class="chart-wrapper">
         <canvas id="userChart"></canvas>
       </div>
@@ -122,7 +115,12 @@
         ];
 
         while (colors.length < num) {
-          colors.push("#" + Math.floor(Math.random() * 16777215).toString(16));
+          colors.push(
+            "#" +
+              Math.floor(Math.random() * 16777215)
+                .toString(16)
+                .padStart(6, "0")
+          );
         }
 
         return colors;
@@ -135,49 +133,63 @@
           "MBRENA",
           "ZELIAS",
           "CRAVELO",
-          "RMEZA",
           "AALEGRE",
+          "SHANCO",
+          "RMEZA",
           "MESPINOZA",
           "YHUERE",
+          "AESPINOZA",
+          "AMAU",
           "OTORRES",
           "DCUTIMBO",
           "SDURAND",
           "MVASQUEZ",
-          "LHUARI",
-          "AESPINOZA",
-          "AMAU",
-          "NHUAMANCAYO",
-          "DMARCELO",
-          "JUCANAN",
-          "BCABANA",
+          "LCALDERON",
           "IBOCANEGRA",
-          "JVILELA",
-          "AZARZOZA",
+          "LHUARI",
+          "BCABANA",
+          "JMARCHAN",
+          "NHUAMANCAYO",
+          "BJAIMES",
           "ERONDOY",
-          "MGALVEZ",
+          "KOJEDA",
+          "DMARCELO",
+          "NGUERRA",
+          "JUCANAN",
           "LCANCHARI",
+          "DPEDREROS",
+          "CHUAMAN",
+          "JHERENCIA",
+          "AZARZOZA",
+          "KPALOMINO",
+          "LNAVARRO",
+          "MGALVEZ",
+          "JVILELA",
           "ACRUZ",
           "GGARCIA",
           "TEGUSQUIZA",
           "SQUIROZ",
+          "YARPE",
           "MNAJARRO",
-          "JMARCHAN",
-          "CHUAMAN",
-          "DPEDREROS",
-          "SHANCO",
-          "KPALOMINO",
+          "FGUILLEN",
+          "ASEGURA",
         ],
         datasets: [
           {
             data: [
-              35, 33, 18, 15, 12, 12, 7, 6, 5, 5, 4, 4, 3, 3, 3, 3, 3, 2, 2, 2,
-              2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+              51, 43, 32, 29, 22, 19, 14, 8, 8, 6, 6, 5, 5, 4, 4, 4, 3, 3, 3, 3,
+              3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+              1, 1,
             ],
-            backgroundColor: generateColors(35),
+            backgroundColor: generateColors(44),
             borderWidth: 0,
           },
         ],
       };
+
+      const barHeight = 25;
+      const chartHeight = data.labels.length * barHeight;
+      ctx.parentElement.style.height = chartHeight + "px";
 
       new Chart(ctx, {
         type: "bar",
@@ -206,6 +218,9 @@
                 font: {
                   size: window.innerWidth < 768 ? 10 : 12,
                 },
+                autoSkip: false,
+                maxRotation: 0,
+                minRotation: 0,
               },
             },
           },
