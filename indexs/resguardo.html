@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Índice de Páginas</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+    />
+    <style>
+      .btn-custom {
+        display: block;
+        width: 100%;
+        margin-bottom: 10px;
+        text-align: left;
+        padding: 12px 20px;
+        font-size: 16px;
+        border-radius: 5px;
+        transition: all 0.3s ease;
+      }
+
+      .btn-custom:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .btn-2020 {
+        background-color: #007bff;
+        border-color: #007bff;
+        color: #fff;
+      }
+
+      .btn-2020:hover {
+        background-color: #0056b3;
+        border-color: #004a99;
+      }
+
+      .btn-2021 {
+        background-color: #28a745;
+        border-color: #28a745;
+        color: #fff;
+      }
+
+      .btn-2021:hover {
+        background-color: #1e7e34;
+        border-color: #1c7430;
+      }
+
+      .btn-2022 {
+        background-color: #ffc107;
+        border-color: #ffc107;
+        color: #212529;
+      }
+
+      .btn-2022:hover {
+        background-color: #d39e00;
+        border-color: #c69500;
+      }
+
+      .btn-2023 {
+        background-color: #dc3545;
+        border-color: #dc3545;
+        color: #fff;
+      }
+
+      .btn-2023:hover {
+        background-color: #a71d2a;
+        border-color: #9c1a24;
+      }
+
+      .btn-2024 {
+        background-color: #6f42c1;
+        border-color: #6f42c1;
+        color: #fff;
+      }
+
+      .btn-2024:hover {
+        background-color: #59359a;
+        border-color: #533093;
+      }
+
+      .title-container {
+        background-color: #26d07c;
+        color: white;
+        padding: 20px;
+        margin-bottom: 20px;
+      }
+
+      @media (max-width: 767px) {
+        .btn-group {
+          flex-direction: column;
+        }
+
+        .btn-custom {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container my-5">
+      <div class="title-container">
+        <h1 class="mb-0">Análisis de Datos 🚀</h1>
+      </div>
+
+      <div class="row mb-4">
+        <div class="col-md-12">
+          <h3>Selecciona el año:</h3>
+          <div class="btn-group d-flex flex-column">
+            <a
+              href="#"
+              class="btn btn-2020 btn-custom"
+              onclick="showYearOptions('2020')"
+              >2020</a
+            >
+            <a
+              href="#"
+              class="btn btn-2021 btn-custom"
+              onclick="showYearOptions('2021')"
+              >2021</a
+            >
+            <a
+              href="#"
+              class="btn btn-2022 btn-custom"
+              onclick="showYearOptions('2022')"
+              >2022</a
+            >
+            <a
+              href="#"
+              class="btn btn-2023 btn-custom"
+              onclick="showYearOptions('2023')"
+              >2023</a
+            >
+            <a
+              href="#"
+              class="btn btn-2024 btn-custom"
+              onclick="showYearOptions('2024')"
+              >2024</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal -->
+      <div
+        class="modal fade"
+        id="yearOptionsModal"
+        tabindex="-1"
+        aria-labelledby="yearOptionsModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="yearOptionsModalLabel">
+                Opciones del año
+              </h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body" id="yearOptionsModalBody">
+              <!-- Aquí se mostrarán las opciones del año seleccionado -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      function showYearOptions(year) {
+        const modal = new bootstrap.Modal(
+          document.getElementById("yearOptionsModal")
+        );
+        const modalBody = document.getElementById("yearOptionsModalBody");
+
+        // Limpiar el contenido del modal antes de mostrar las opciones
+        modalBody.innerHTML = "";
+
+        // Generar los enlaces para el año 2020
+        if (year === "2020") {
+          modalBody.innerHTML = `
+          <a href="2020/CALLAO_4.html" class="btn btn-2020 btn-custom">Callao 4</a>
+          <a href="2020/TRUJILLO_3.html" class="btn btn-2020 btn-custom">Trujillo 3</a>
+          <a href="2020/CHIMBOTE.html" class="btn btn-2020 btn-custom">Chimbote</a>
+          <a href="2020/TUMBES.html" class="btn btn-2020 btn-custom">Tumbes</a>
+          <a href="2020/CIVICO_1.html" class="btn btn-2020 btn-custom">Civico 1</a>
+          <a href="2020/VILLA_MARIA.html" class="btn btn-2020 btn-custom">Villa Maria</a>
+          <a href="2020/CIVICO_2.html" class="btn btn-2020 btn-custom">Civico 2</a>
+          <a href="2020/EL_QUINDE.html" class="btn btn-2020 btn-custom">El Quinde</a>
+          <a href="2020/HIGUERETA.html" class="btn btn-2020 btn-custom">Higuereta</a>
+          <a href="2020/ICA_PLAZA_SOL.html" class="btn btn-2020 btn-custom">Ica Plaza Sol</a>
+          <a href="2020/JOCKEY_1.html" class="btn btn-2020 btn-custom">Jockey 1</a>
+          <a href="2020/MALL_AREQUIPA.html" class="btn btn-2020 btn-custom">Mall Arequipa</a>
+          <a href="2020/MEGA_1.html" class="btn btn-2020 btn-custom">Mega 1</a>
+          <a href="2020/MEGA_4.html" class="btn btn-2020 btn-custom">Mega 4</a>
+          <a href="2020/OPEN_ATOCONGO.html" class="btn btn-2020 btn-custom">Open Atocongo</a>
+          <a href="2020/OPEN_LA_MARINA.html" class="btn btn-2020 btn-custom">Open La Marina</a>
+          <a href="2020/PIURA_1.html" class="btn btn-2020 btn-custom">Piura 1</a>
+          <a href="2020/PIURA_2.html" class="btn btn-2020 btn-custom">Piura 2</a>
+          <a href="2020/PLAZA_NORTE_2.html" class="btn btn-2020 btn-custom">Plaza Norte 2</a>
+          <a href="2020/PLAZA_NORTE_3.html" class="btn btn-2020 btn-custom">Plaza Norte 3</a>
+          <a href="2020/PRIMAVERA.html" class="btn btn-2020 btn-custom">Primavera</a>
+          <a href="2020/PRO_1.html" class="btn btn-2020 btn-custom">Pro 1</a>
+          <a href="2020/PRO_2.html" class="btn btn-2020 btn-custom">Pro 2</a>
+          <a href="2020/SAN_MIGUEL_3.html" class="btn btn-2020 btn-custom">San Miguel 3</a>
+        `;
+        } else if (year === "2021") {
+          // Generar los enlaces para el año 2021
+          modalBody.innerHTML = `
+    <a href="2021/CALLAO_4.html" class="btn btn-2021 btn-custom">CALLAO 4</a>
+    <a href="2021/CHICLAYO.html" class="btn btn-2021 btn-custom">CHICLAYO</a>
+    <a href="2021/CIVICO_1.html" class="btn btn-2021 btn-custom">CIVICO 1</a>
+    <a href="2021/CIVICO_2.html" class="btn btn-2021 btn-custom">CIVICO 2</a>
+    <a href="2021/EL_QUINDE.html" class="btn btn-2021 btn-custom">EL QUINDE</a>
+    <a href="2021/HIGUERETA.html" class="btn btn-2021 btn-custom">HIGUERETA</a>
+    <a href="2021/ICA_PLAZA_SOL.html" class="btn btn-2021 btn-custom">ICA PLAZA SOL</a>
+    <a href="2021/JOCKEY_1.html" class="btn btn-2021 btn-custom">JOCKEY 1</a>
+    <a href="2021/MALL_AREQUIPA.html" class="btn btn-2021 btn-custom">MALL AREQUIPA</a>
+    <a href="2021/MEGA_1.html" class="btn btn-2021 btn-custom">MEGA 1</a>
+    <a href="2021/MEGA_4.html" class="btn btn-2021 btn-custom">MEGA 4</a>
+    <a href="2021/OPEN_ATOCONGO.html" class="btn btn-2021 btn-custom">OPEN ATOCONGO</a>
+    <a href="2021/OPEN_LA_MARINA.html" class="btn btn-2021 btn-custom">OPEN LA MARINA</a>
+    <a href="2021/OPEN_PIURA.html" class="btn btn-2021 btn-custom">OPEN PIURA</a>
+    <a href="2021/PLAZA_NORTE_3.html" class="btn btn-2021 btn-custom">PLAZA NORTE 3</a>
+    <a href="2021/PRO_2.html" class="btn btn-2021 btn-custom">PRO 2</a>
+    <a href="2021/PRO.html" class="btn btn-2021 btn-custom">PRO</a>
+    <a href="2021/REAL_CUZCO_2.html" class="btn btn-2021 btn-custom">REAL CUZCO 2</a>
+    <a href="2021/REAL_PIURA_2.html" class="btn btn-2021 btn-custom">REAL PIURA 2</a>
+    <a href="2021/REAL_PIURA.html" class="btn btn-2021 btn-custom">REAL PIURA</a>
+    <a href="2021/REAL_PRIMAVERA.html" class="btn btn-2021 btn-custom">REAL PRIMAVERA</a>
+    <a href="2021/SAN_MIGUEL_3.html" class="btn btn-2021 btn-custom">SAN MIGUEL 3</a>
+    <a href="2021/TRUJILLO_3.html" class="btn btn-2021 btn-custom">TRUJILLO 3</a>
+    <a href="2021/TRUJILLO_4.html" class="btn btn-2021 btn-custom">TRUJILLO 4</a>
+    <a href="2021/TUMBES.html" class="btn btn-2021 btn-custom">TUMBES</a>
+    <a href="2021/VILLA_MARIA.html" class="btn btn-2021 btn-custom">VILLA MARIA</a>
+  `;
+        } else if (year === "2022") {
+          // Generar los enlaces para el año 2022
+          modalBody.innerHTML = `
+    <a href="2022/CALLAO_4.html" class="btn btn-2022 btn-custom">CALLAO 4</a>
+    <a href="2022/CHICLAYO.html" class="btn btn-2022 btn-custom">CHICLAYO</a>
+    <a href="2022/CIVICO.html" class="btn btn-2022 btn-custom">CIVICO</a>
+    <a href="2022/CIVICO_2.html" class="btn btn-2022 btn-custom">CIVICO 2</a>
+    <a href="2022/EL_QUINDE.html" class="btn btn-2022 btn-custom">EL QUINDE</a>
+    <a href="2022/HIGUERETA.html" class="btn btn-2022 btn-custom">HIGUERETA</a>
+    <a href="2022/ICA.html" class="btn btn-2022 btn-custom">ICA</a>
+    <a href="2022/JOCKEY_1.html" class="btn btn-2022 btn-custom">JOCKEY 1</a>
+    <a href="2022/JOCKEY_3.html" class="btn btn-2022 btn-custom">JOCKEY 3</a>
+    <a href="2022/MEGA_1.html" class="btn btn-2022 btn-custom">MEGA 1</a>
+    <a href="2022/MEGA_4.html" class="btn btn-2022 btn-custom">MEGA 4</a>
+    <a href="2022/OPEN_ATOCONGO.html" class="btn btn-2022 btn-custom">OPEN ATOCONGO</a>
+    <a href="2022/OPEN_LA_MARINA.html" class="btn btn-2022 btn-custom">OPEN LA MARINA</a>
+    <a href="2022/OPEN_PIURA.html" class="btn btn-2022 btn-custom">OPEN PIURA</a>
+    <a href="2022/PIURA_REAL_PLAZA.html" class="btn btn-2022 btn-custom">PIURA REAL PLAZA</a>
+    <a href="2022/PLAZA_NORTE_3.html" class="btn btn-2022 btn-custom">PLAZA NORTE 3</a>
+    <a href="2022/PRO.html" class="btn btn-2022 btn-custom">PRO</a>
+    <a href="2022/PURUCHUCO.html" class="btn btn-2022 btn-custom">PURUCHUCO</a>
+    <a href="2022/REAL_PIURA_2.html" class="btn btn-2022 btn-custom">REAL PIURA 2</a>
+    <a href="2022/REAL_PRIMAVERA.html" class="btn btn-2022 btn-custom">REAL PRIMAVERA</a>
+    <a href="2022/TUMBES.html" class="btn btn-2022 btn-custom">TUMBES</a>
+    <a href="2022/REAL_CUSCO_2.html" class="btn btn-2022 btn-custom">REAL CUSCO 2</a>
+    <a href="2022/SAN_MIGUEL_3.html" class="btn btn-2022 btn-custom">SAN MIGUEL 3</a>
+    <a href="2022/TRUJILLO_4.html" class="btn btn-2022 btn-custom">TRUJILLO 4</a>
+    <a href="2022/MALL_DEL_SUR.html" class="btn btn-2022 btn-custom">MALL DEL SUR</a>
+    <a href="2022/MALL_AREQ.html" class="btn btn-2022 btn-custom">MALL AREQ</a>
+    <a href="2022/PRO_2.html" class="btn btn-2022 btn-custom">PRO 2</a>
+    <a href="2022/PRODUCTORES.html" class="btn btn-2022 btn-custom">PRODUCTORES</a>
+  `;
+        } else if (year === "2023") {
+          // Generar los enlaces para el año 2023
+
+          modalBody.innerHTML =  `
+<a href="2023/CALLAO_4.html" class="btn btn-2023 btn-custom">CALLAO 4</a>
+<a href="2023/CHICLAYO.html" class="btn btn-2023 btn-custom">CHICLAYO</a>
+<a href="2023/CIVICO.html" class="btn btn-2023 btn-custom">CIVICO</a>
+<a href="2023/CIVICO_2.html" class="btn btn-2023 btn-custom">CIVICO 2</a>
+<a href="2023/CUSCO_2.html" class="btn btn-2023 btn-custom">CUSCO 2</a>
+<a href="2023/EL_QUINDE.html" class="btn btn-2023 btn-custom">EL QUINDE</a>
+<a href="2023/HIGUERETA.html" class="btn btn-2023 btn-custom">HIGUERETA</a>
+<a href="2023/ICA.html" class="btn btn-2023 btn-custom">ICA</a>
+<a href="2023/JOCKEY_1.html" class="btn btn-2023 btn-custom">JOCKEY 1</a>
+<a href="2023/JOCKEY_3.html" class="btn btn-2023 btn-custom">JOCKEY 3</a>
+<a href="2023/JOCKEY_4.html" class="btn btn-2023 btn-custom">JOCKEY 4</a>
+<a href="2023/JOCKEY_5.html" class="btn btn-2023 btn-custom">JOCKEY 5</a>
+<a href="2023/MALL_AREQ_2.html" class="btn btn-2023 btn-custom">MALL AREQ 2</a>
+<a href="2023/MALL_COMAS.html" class="btn btn-2023 btn-custom">MALL COMAS</a>
+<a href="2023/MALL_DEL_SUR.html" class="btn btn-2023 btn-custom">MALL DEL SUR</a>
+<a href="2023/MALL_DEL_SUR_2.html" class="btn btn-2023 btn-custom">MALL DEL SUR 2</a>
+<a href="2023/MEGA_1.html" class="btn btn-2023 btn-custom">MEGA 1</a>
+<a href="2023/MEGA_4.html" class="btn btn-2023 btn-custom">MEGA 4</a>
+<a href="2023/MEGA_5.html" class="btn btn-2023 btn-custom">MEGA 5</a>
+<a href="2023/MEGA_6.html" class="btn btn-2023 btn-custom">MEGA 6</a>
+<a href="2023/OPEN_ATOCONGO.html" class="btn btn-2023 btn-custom">OPEN ATOCONGO</a>
+<a href="2023/OPEN_LA_MARINA.html" class="btn btn-2023 btn-custom">OPEN LA MARINA</a>
+<a href="2023/OPEN_PIURA.html" class="btn btn-2023 btn-custom">OPEN PIURA</a>
+<a href="2023/PARQUE_CANEPA.html" class="btn btn-2023 btn-custom">PARQUE CANEPA</a>
+<a href="2023/PIURA_REAL_PLAZA.html" class="btn btn-2023 btn-custom">PIURA REAL PLAZA</a>
+<a href="2023/PLAZA_NORTE_3.html" class="btn btn-2023 btn-custom">PLAZA NORTE 3</a>
+<a href="2023/PRO.html" class="btn btn-2023 btn-custom">PRO</a>
+<a href="2023/PRO_2.html" class="btn btn-2023 btn-custom">PRO 2</a>
+<a href="2023/PRODUCTORES.html" class="btn btn-2023 btn-custom">PRODUCTORES</a>
+<a href="2023/PURUCHUCO.html" class="btn btn-2023 btn-custom">PURUCHUCO</a>
+<a href="2023/REAL_CHICLAYO.html" class="btn btn-2023 btn-custom">REAL CHICLAYO</a>
+<a href="2023/REAL_PIURA.html" class="btn btn-2023 btn-custom">REAL PIURA</a>
+<a href="2023/REAL_PIURA_2.html" class="btn btn-2023 btn-custom">REAL PIURA 2</a>
+<a href="2023/REAL_PRIMAVERA.html" class="btn btn-2023 btn-custom">REAL PRIMAVERA</a>
+<a href="2023/SAN_MIGUEL_3.html" class="btn btn-2023 btn-custom">SAN MIGUEL 3</a>
+<a href="2023/TRUJILLO_4.html" class="btn btn-2023 btn-custom">TRUJILLO 4</a>
+<a href="2023/TUMBES.html" class="btn btn-2023 btn-custom">TUMBES</a>
+
+`
+          
+        } else if (year === "2024") {
+          // Generar los enlaces para el año 2024
+        }
+
+        // Mostrar el modal
+        modal.show();
+      }
+    </script>
+  </body>
+</html>
