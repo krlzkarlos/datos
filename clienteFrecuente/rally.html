@@ -11,7 +11,6 @@
         font-family: Arial, sans-serif;
         background: #f5f5f5;
       }
-
       .chart-container {
         background: white;
         border-radius: 8px;
@@ -22,41 +21,33 @@
         padding: 20px;
         box-sizing: border-box;
       }
-
       h2 {
         text-align: center;
         color: #333;
         font-size: 24px;
         margin: 0 0 10px 0;
       }
-
       .total-registros {
         text-align: center;
         color: #666;
         font-size: 16px;
         margin: 0 0 20px 0;
       }
-
       .chart-wrapper {
         position: relative;
-
         width: 100%;
       }
-
       @media (max-width: 768px) {
         body {
           padding: 10px;
         }
-
         .chart-container {
           padding: 15px;
           width: 98%;
         }
-
         h2 {
           font-size: 20px;
         }
-
         .total-registros {
           font-size: 14px;
           margin-bottom: 15px;
@@ -67,14 +58,89 @@
   <body>
     <div class="chart-container">
       <h2>Rally PeruMoney 🚀🏁</h2>
-      <div class="total-registros">Total de registros: 306</div>
-      <h6>update 11/06/2025 00:00</h6>
+      <div id="total-registros-display" class="total-registros"></div>
+      <h6>update 16/06/2025 00:00</h6>
       <div class="chart-wrapper">
         <canvas id="userChart"></canvas>
       </div>
     </div>
 
     <script>
+      // ===================================================================================
+      // ✨ DATOS ACTUALIZADOS SEGÚN LA IMAGEN ✨
+      // ===================================================================================
+      const userData = [
+        { nombre: "EHENCKELL", registros: 87 },
+        { nombre: "MBRENA", registros: 74 },
+        { nombre: "CRAVELO", registros: 44 },
+        { nombre: "ZELIAS", registros: 41 },
+        { nombre: "SHANCO", registros: 37 },
+        { nombre: "AALEGRE", registros: 35 },
+        { nombre: "AMAU", registros: 18 },
+        { nombre: "RMEZA", registros: 18 },
+        { nombre: "YHUERE", registros: 14 },
+        { nombre: "MESPINOZA", registros: 12 },
+        { nombre: "SDURAND", registros: 12 },
+        { nombre: "DCUTIMBO", registros: 10 },
+        { nombre: "PROSILLO", registros: 9 },
+        { nombre: "OTORRES", registros: 8 },
+        { nombre: "AESPINOZA", registros: 8 },
+        { nombre: "BCABANA", registros: 7 },
+        { nombre: "NHUAMANCA", registros: 6 },
+        { nombre: "LHUARI", registros: 5 },
+        { nombre: "MVASQUEZ", registros: 5 },
+        { nombre: "LCALDERON", registros: 4 },
+        { nombre: "DPEDREROS", registros: 4 },
+        { nombre: "IBOCANEGRA", registros: 4 },
+        { nombre: "BJAIMES", registros: 3 },
+        { nombre: "JHERENCIA", registros: 3 },
+        { nombre: "YRUYZ", registros: 3 },
+        { nombre: "JMARCHAN", registros: 3 },
+        { nombre: "ERONDOY", registros: 3 },
+        { nombre: "JRIVERA", registros: 3 },
+        { nombre: "KOJEDA", registros: 3 },
+        { nombre: "JUCANAN", registros: 2 },
+        { nombre: "NGUERRA", registros: 2 },
+        { nombre: "LNAVARRO", registros: 2 },
+        { nombre: "YARPE", registros: 2 },
+        { nombre: "SROMERO", registros: 2 },
+        { nombre: "DMARCELO", registros: 2 },
+        { nombre: "LCANCHARI", registros: 2 },
+        { nombre: "KPALOMINO", registros: 1 },
+        { nombre: "ASEGURA", registros: 1 },
+        { nombre: "JVILELA", registros: 1 },
+        { nombre: "ACRUZ", registros: 1 },
+        { nombre: "TEGUSQUIZA", registros: 1 },
+        { nombre: "AZARZOZA", registros: 1 },
+        { nombre: "FGUILLEN", registros: 1 },
+        { nombre: "SQUIROZ", registros: 1 },
+        { nombre: "MGALVEZ", registros: 1 },
+        { nombre: "MNAJARRO", registros: 1 },
+        { nombre: "GGARCIA", registros: 1 },
+        { nombre: "CHUAMAN", registros: 1 },
+      ];
+
+      // ===================================================================================
+      // ✨ EL SCRIPT PROCESA LOS DATOS (NO NECESITAS MODIFICAR ESTO) ✨
+      // ===================================================================================
+
+      // 1. Ordenar los datos de mayor a menor
+      userData.sort((a, b) => b.registros - a.registros);
+
+      // 2. Preparar los datos para Chart.js
+      const labels = userData.map((user) => user.nombre);
+      const dataPoints = userData.map((user) => user.registros);
+
+      // 3. Calcular y mostrar el total de registros
+      const totalRegistros = dataPoints.reduce(
+        (sum, current) => sum + current,
+        0
+      );
+      document.getElementById(
+        "total-registros-display"
+      ).innerText = `Total de registros: ${totalRegistros}`;
+
+      // 4. Función para generar colores
       function generateColors(num) {
         const colors = [
           "#FF6384",
@@ -83,37 +149,7 @@
           "#4BC0C0",
           "#9966FF",
           "#FF9F40",
-          "#FF6B6B",
-          "#4ECDC4",
-          "#7CB342",
-          "#7986CB",
-          "#BA68C8",
-          "#4DB6AC",
-          "#FFB74D",
-          "#F06292",
-          "#64B5F6",
-          "#81C784",
-          "#FFD54F",
-          "#A1887F",
-          "#90A4AE",
-          "#E57373",
-          "#7E57C2",
-          "#66BB6A",
-          "#FFA726",
-          "#26A69A",
-          "#42A5F5",
-          "#AB47BC",
-          "#EC407A",
-          "#5C6BC0",
-          "#26C6DA",
-          "#8D6E63",
-          "#78909C",
-          "#EF5350",
-          "#29B6F6",
-          "#66BB6A",
-          "#FDD835",
         ];
-
         while (colors.length < num) {
           colors.push(
             "#" +
@@ -122,118 +158,40 @@
                 .padStart(6, "0")
           );
         }
-
         return colors;
       }
 
+      // 5. Ajustar altura del gráfico y renderizarlo
       const ctx = document.getElementById("userChart");
-      const data = {
-        labels: [
-          "EHENCKELL",
-          "MBRENA",
-          "ZELIAS",
-          "CRAVELO",
-          "AALEGRE",
-          "SHANCO",
-          "RMEZA",
-          "MESPINOZA",
-          "YHUERE",
-          "AESPINOZA",
-          "AMAU",
-          "OTORRES",
-          "DCUTIMBO",
-          "SDURAND",
-          "MVASQUEZ",
-          "LCALDERON",
-          "IBOCANEGRA",
-          "LHUARI",
-          "BCABANA",
-          "JMARCHAN",
-          "NHUAMANCAYO",
-          "BJAIMES",
-          "ERONDOY",
-          "KOJEDA",
-          "DMARCELO",
-          "NGUERRA",
-          "JUCANAN",
-          "LCANCHARI",
-          "DPEDREROS",
-          "CHUAMAN",
-          "JHERENCIA",
-          "AZARZOZA",
-          "KPALOMINO",
-          "LNAVARRO",
-          "MGALVEZ",
-          "JVILELA",
-          "ACRUZ",
-          "GGARCIA",
-          "TEGUSQUIZA",
-          "SQUIROZ",
-          "YARPE",
-          "MNAJARRO",
-          "FGUILLEN",
-          "ASEGURA",
-        ],
-        datasets: [
-          {
-            data: [
-              51, 43, 32, 29, 22, 19, 14, 8, 8, 6, 6, 5, 5, 4, 4, 4, 3, 3, 3, 3,
-              3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-              1, 1,
-            ],
-            backgroundColor: generateColors(44),
-            borderWidth: 0,
-          },
-        ],
-      };
-
-      const barHeight = 25;
-      const chartHeight = data.labels.length * barHeight;
+      const barHeight = 25; // Altura en píxeles por cada barra
+      const chartHeight = labels.length * barHeight;
       ctx.parentElement.style.height = chartHeight + "px";
 
       new Chart(ctx, {
         type: "bar",
-        data: data,
+        data: {
+          labels: labels,
+          datasets: [
+            {
+              data: dataPoints,
+              backgroundColor: generateColors(userData.length),
+              borderWidth: 0,
+            },
+          ],
+        },
         options: {
           indexAxis: "y",
           responsive: true,
           maintainAspectRatio: false,
           scales: {
-            x: {
-              beginAtZero: true,
-              grid: {
-                display: false,
-              },
-              ticks: {
-                font: {
-                  size: window.innerWidth < 768 ? 10 : 12,
-                },
-              },
-            },
-            y: {
-              grid: {
-                display: false,
-              },
-              ticks: {
-                font: {
-                  size: window.innerWidth < 768 ? 10 : 12,
-                },
-                autoSkip: false,
-                maxRotation: 0,
-                minRotation: 0,
-              },
-            },
+            x: { beginAtZero: true, grid: { display: false } },
+            y: { grid: { display: false }, ticks: { autoSkip: false } },
           },
           plugins: {
-            legend: {
-              display: false,
-            },
+            legend: { display: false },
             tooltip: {
-              enabled: true,
               callbacks: {
-                label: function (context) {
-                  return context.parsed.x + " registros";
-                },
+                label: (context) => `${context.parsed.x} registros`,
               },
             },
           },
